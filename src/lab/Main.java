@@ -1,25 +1,46 @@
 package lab;
 
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
 
-     /*   Customer customer1 = new Customer();
+        System.out.println("\t~~Первая программа на Java~~");
+        System.out.println("Главное меню:");
+        System.out.println("1. Создать магазин пластинок");
+        System.out.println("2. Посмотреть информацию о сотрудниках");
+        System.out.println("3. Посмотреть ассортимент магазина");
+        System.out.println("4. Создать заказ");
+        System.out.println("5. Посмотреть информацию о заказе\n");
 
-        customer1.inputCustomer();
-        customer1.outputCustomer();
+        int input;
 
-        Employee employee1 = new Employee();
+        do {
+            System.out.print("Выберите действие: ");
+            Scanner scan = new Scanner(System.in);
+            input = scan.nextInt();
 
-        employee1.inputEmployee();
-        employee1.outputEmployee();*/
-
-        VinylRecord record1 = new VinylRecord();
-
-        System.out.println("\t~~Введите информацию о виниловой пластинке~~");
-        record1.inputVinylRecord();
-        System.out.println("\t~~Информация о виниловой пластинке~~");
-        record1.outputVinylRecord();
+            switch (input) {
+                case 1:
+                    System.out.println("1 действие");
+                    break;
+                case 2:
+                    System.out.println("2 действие");
+                    break;
+                case 3:
+                    System.out.println("3 действие");
+                    break;
+                case 4:
+                    System.out.println("4 действие");
+                    break;
+                case 5:
+                    System.out.println("5 действие");
+                    break;
+                default:
+                    System.out.println("Некорректный выбор!\n");
+            }
+        }while (input < 1 || input > 5);
     }
 
 }

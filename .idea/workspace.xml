@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="260b935c-b345-4719-b76a-fe77a1b7016d" name="Changes" comment="Создал все необходимые классы (VinulRecord, Human, Customer, Employee, Order, Store), реализовал абстрактный класс Human и его класс-наследник Customer">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="260b935c-b345-4719-b76a-fe77a1b7016d" name="Changes" comment="Реализовал классы Employee и VinylRecord, добавил отчет .docx в .gitignore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lab/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lab/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lab/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/Human.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lab/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lab/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lab/VinylRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/VinylRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lab/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/Store.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +63,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697866978403</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Реализовал классы Employee и VinylRecord, добавил отчет .docx в .gitignore">
+      <option name="closed" value="true" />
+      <created>1697874767991</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1697874767991</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -83,6 +87,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Создал все необходимые классы (VinulRecord, Human, Customer, Employee, Order, Store), реализовал абстрактный класс Human и его класс-наследник Customer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Создал все необходимые классы (VinulRecord, Human, Customer, Employee, Order, Store), реализовал абстрактный класс Human и его класс-наследник Customer" />
+    <MESSAGE value="Реализовал классы Employee и VinylRecord, добавил отчет .docx в .gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Реализовал классы Employee и VinylRecord, добавил отчет .docx в .gitignore" />
   </component>
 </project>
