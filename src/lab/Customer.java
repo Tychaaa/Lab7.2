@@ -4,18 +4,20 @@ import java.util.Scanner;
 
 // Класс для объекта "Клиент"
 public class Customer extends Human {
-    private float money;        // Кол/во денег клиента
+    private float money;        // Количество денег клиента
     private String address;     // Адрес доставки клиента
 
     // Конструктор без параметров
     public Customer(){
+        this.money = 0;
+        this.address = "";
     }
 
     // Контруктор с параметрами
     public Customer(String firstName, String lastName, float money, String address) {
         super(firstName, lastName);
-        setMoney(money);
-        setAddress(address);
+        this.money = money;
+        this.address = address;
     }
 
     // Метод для установки денег клиента
@@ -48,22 +50,21 @@ public class Customer extends Human {
 
         System.out.print("Введите фамилию клиента: ");
         setLastName(scanner.next());
-        scanner.nextLine(); // Очищаем буфер для считывания строки
+        scanner.nextLine(); // Очищаем буфер
 
         System.out.print("Введите количество денег клиента: ");
         setMoney(scanner.nextFloat());
 
-        scanner.nextLine(); // Очищаем буфер для считывания строки
+        scanner.nextLine(); // Очищаем буфер
         System.out.print("Введите адрес доставки клиента: ");
         setAddress(scanner.nextLine());
     }
 
     // Метод для вывода информации о клиенте
     public void outputCustomer() {
-        System.out.println("Имя: " + getFirstName());
-        System.out.println("Фамилия: " + getLastName());
+        System.out.println("Имя: " + getFirstName() + " " + getLastName());
+//        System.out.println("Фамилия: " + getLastName());
         System.out.println("Количество денег: " + getMoney());
         System.out.println("Адрес доставки: " + getAddress());
     }
-
 }
