@@ -33,11 +33,20 @@ public class Store {
         this.storeAddress = storeAddress;
     }
 
+    public Employee[] getEmployeesInStore(){
+        return employeesInStore;
+    }
+
+    public VinylRecord[] getVinylRecordsInStore(){
+        return vinylRecordsInStore;
+    }
+
     // Метод для ввода информации о магазине
     public void inputStoreInfo() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("\t~~Создание магазина виниловых пластинок~~");
+        System.out.println("\n\t~~Создание магазина~~");
+        System.out.println("-------------------------------------------");
 
         System.out.print("Введите название магазина: ");
         setStoreName(scanner.nextLine());
@@ -71,10 +80,11 @@ public class Store {
             employeesInStore[i].inputEmployee();
             System.out.println("-------------------------------------------");
         }
+        System.out.println();
     }
     // Метод для вывода информации о введенных сотрудниках
     public void outputEmployees() {
-        System.out.println("Информация о сотрудниках магазина \"" + getStoreName() + "\"");
+        System.out.println("\n\t~~Информация о сотрудниках магазина \"" + getStoreName() + "\"~~");
         int employeeNumber = 1; // Счетчик для номера сотрудника
         System.out.println("---------------------------");
         for (Employee employee : employeesInStore) {
@@ -88,10 +98,23 @@ public class Store {
                 employeeNumber++;
             }
         }
+        System.out.println();
     }
+
+    public void outputEmployeesShortList(){
+        System.out.println("Сотрудники магазина:");
+        int employeeNumber = 1; // Счетчик для номера сотрудника
+        for (Employee employee : employeesInStore) {
+            if (employee != null) {
+                System.out.println(employeeNumber + ") " + employee.getFirstName() + " " + employee.getLastName() + " - " + employee.getPosition());
+                employeeNumber++;
+            }
+        }
+    }
+
     // Метод для вывода информации о введенных виниловых пластинках
     public void outputVinylRecords() {
-        System.out.println("Информация о виниловых пластинках в магазине \"" + getStoreName() + "\"");
+        System.out.println("\n\t~~Информация о виниловых пластинках в магазине \"" + getStoreName() + "\"~~");
         int recordNumber = 1; // Счетчик для номера пластинки
         System.out.println("---------------------------");
         for (VinylRecord record : vinylRecordsInStore) {
@@ -107,12 +130,10 @@ public class Store {
                 recordNumber++;
             }
         }
+        System.out.println();
     }
-    // Метод для вывода всей информации о магазине
-    public void outputStoreInfo() {
-        System.out.println("Информация о магазине:");
-        System.out.println("Название магазина: " + getStoreName());
-        System.out.println("Адрес магазина: " + getStoreAddress());
+
+    public void outputVinylRecordsShortList(){
         System.out.println("Пластинки в наличии:");
         int recordNumber = 1;
         for (VinylRecord record : vinylRecordsInStore) {
@@ -121,13 +142,16 @@ public class Store {
                 recordNumber++;
             }
         }
-        System.out.println("Сотрудники магазина:");
-        int employeeNumber = 1; // Счетчик для номера сотрудника
-        for (Employee employee : employeesInStore) {
-            if (employee != null) {
-                System.out.println(employeeNumber + ") " + employee.getFirstName() + " " + employee.getLastName() + " - " + employee.getPosition());
-                employeeNumber++;
-            }
-        }
+    }
+
+    // Метод для вывода всей информации о магазине
+    public void outputStoreInfo() {
+        System.out.println("\n\t~~Информация о магазине~~");
+        System.out.println("-------------------------------------------");
+        System.out.println("Название магазина: " + getStoreName());
+        System.out.println("Адрес магазина: " + getStoreAddress());
+        outputVinylRecordsShortList();
+        outputEmployeesShortList();
+        System.out.println("-------------------------------------------\n");
     }
 }

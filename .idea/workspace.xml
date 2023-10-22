@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="260b935c-b345-4719-b76a-fe77a1b7016d" name="Changes" comment="Начал реализацию классов Order и Store, оформил главное меню программы">
+    <list default="true" id="260b935c-b345-4719-b76a-fe77a1b7016d" name="Changes" comment="Реализовал методы ввода информации о магазине, вывода информации о всем магазине, а также об отдельных его элементах. Начал реализацию главного меню">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lab/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lab/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lab/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/Store.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +79,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697882794354</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Реализовал методы ввода информации о магазине, вывода информации о всем магазине, а также об отдельных его элементах. Начал реализацию главного меню">
+      <option name="closed" value="true" />
+      <created>1697951919082</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1697951919082</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -96,6 +105,7 @@
     <MESSAGE value="Создал все необходимые классы (VinulRecord, Human, Customer, Employee, Order, Store), реализовал абстрактный класс Human и его класс-наследник Customer" />
     <MESSAGE value="Реализовал классы Employee и VinylRecord, добавил отчет .docx в .gitignore" />
     <MESSAGE value="Начал реализацию классов Order и Store, оформил главное меню программы" />
-    <option name="LAST_COMMIT_MESSAGE" value="Начал реализацию классов Order и Store, оформил главное меню программы" />
+    <MESSAGE value="Реализовал методы ввода информации о магазине, вывода информации о всем магазине, а также об отдельных его элементах. Начал реализацию главного меню" />
+    <option name="LAST_COMMIT_MESSAGE" value="Реализовал методы ввода информации о магазине, вывода информации о всем магазине, а также об отдельных его элементах. Начал реализацию главного меню" />
   </component>
 </project>
