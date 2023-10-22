@@ -63,7 +63,6 @@ public class Customer extends Human {
     // Метод для вывода информации о клиенте
     public void outputCustomer() {
         System.out.println("Имя: " + getFirstName() + " " + getLastName());
-//        System.out.println("Фамилия: " + getLastName());
         System.out.println("Количество денег: " + getMoney());
         System.out.println("Адрес доставки: " + getAddress());
     }

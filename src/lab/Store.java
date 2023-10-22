@@ -2,6 +2,7 @@ package lab;
 
 import java.util.Scanner;
 
+// Класс для объекта "Магазин"
 public class Store {
     private static final int MAX_RECORDS = 100; // Максимальное количество виниловых пластинок в магазине
     private static final int MAX_EMPLOYEES = 50; // Максимальное количество сотрудников магазина
@@ -17,26 +18,32 @@ public class Store {
         this.storeAddress = "";
     }
 
+    // Метод для получения названия магазина
     public String getStoreName() {
         return storeName;
     }
 
+    // Метод для установки названия магазина
     public void setStoreName(String storeName) {
         this.storeName = storeName;
     }
 
+    // Метод для получения адреса магазина
     public String getStoreAddress() {
         return storeAddress;
     }
 
+    // Метод для установки адреса магазина
     public void setStoreAddress(String storeAddress) {
         this.storeAddress = storeAddress;
     }
 
+    // Методы для получения массива сотрудников магазина
     public Employee[] getEmployeesInStore(){
         return employeesInStore;
     }
 
+    // Методы для получения массива виниловых пластинок в магазине
     public VinylRecord[] getVinylRecordsInStore(){
         return vinylRecordsInStore;
     }
@@ -82,6 +89,7 @@ public class Store {
         }
         System.out.println();
     }
+
     // Метод для вывода информации о введенных сотрудниках
     public void outputEmployees() {
         System.out.println("\n\t~~Информация о сотрудниках магазина \"" + getStoreName() + "\"~~");
@@ -101,6 +109,7 @@ public class Store {
         System.out.println();
     }
 
+    // Метод для вывода краткой информации о сотрудниках магазина
     public void outputEmployeesShortList(){
         System.out.println("Сотрудники магазина:");
         int employeeNumber = 1; // Счетчик для номера сотрудника
@@ -133,6 +142,7 @@ public class Store {
         System.out.println();
     }
 
+    // Метод для вывода краткой информации о виниловых пластинках в магазине
     public void outputVinylRecordsShortList(){
         System.out.println("Пластинки в наличии:");
         int recordNumber = 1;

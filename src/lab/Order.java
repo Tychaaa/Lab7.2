@@ -2,6 +2,7 @@ package lab;
 
 import java.util.Scanner;
 
+// Класс для объекта "Заказ"
 public class Order {
     private int orderNumber;             // Номер заказа
     private String orderDate;            // Дата заказа
@@ -11,40 +12,55 @@ public class Order {
     private int quantityOrdered;         // Кол/во заказанных виниловых пластинок
     private float totalCost;             // Общая стоимость заказа
 
-    public Order(){}
+    // Конструктор без параметров
+    public Order(){
+        this.orderNumber = 0;
+        this.orderDate = "";
+        this.quantityOrdered = 0;
+        this.totalCost = 0;
+    }
 
+    // Метод для получения номера заказа
     public int getOrderNumber() {
         return orderNumber;
     }
 
+    // Метод для установки номера заказа
     public void setOrderNumber(int orderNumber) {
         this.orderNumber = orderNumber;
     }
 
+    // Метод для получения даты заказа
     public String getOrderDate() {
         return orderDate;
     }
 
+    // Метод для установки даты заказа
     public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
     }
 
+    // Метод для получения количества заказанных пластинок
     public int getQuantityOrdered() {
         return quantityOrdered;
     }
 
+    // Метод для установки количества заказанных пластинок
     public void setQuantityOrdered(int quantityOrdered) {
         this.quantityOrdered = quantityOrdered;
     }
 
+    // Метод для получения итоговой стоимости заказа
     public float getTotalCost() {
         return totalCost;
     }
 
+    // Метод для установки итоговой стоимости заказа
     public void setTotalCost(float totalCost) {
         this.totalCost = totalCost;
     }
 
+    // Метод для ввода информации о заказе
     public void inputOrderInfo(Store store) {
         Scanner scanner = new Scanner(System.in);
 
@@ -87,6 +103,7 @@ public class Order {
         totalCost = orderedRecord.getPrice() * quantityOrdered;
     }
 
+    // Метод для вывода информации о заказе
     public void outputOrder() {
         System.out.println("\n\t~~Информация о заказе~~");
         System.out.println("-------------------------------------------");

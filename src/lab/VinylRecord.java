@@ -104,7 +104,7 @@ public class VinylRecord {
         System.out.print("Введите год выпуска: ");
         setYear(scanner.nextInt());
 
-        scanner.nextLine(); // Очищаем буфер после ввода числа
+        scanner.nextLine(); // Очищаем буфер
 
         System.out.print("Введите жанр: ");
         setGenre(scanner.nextLine());

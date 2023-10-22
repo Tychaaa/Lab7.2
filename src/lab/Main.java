@@ -3,12 +3,12 @@ package lab;
 import java.util.Scanner;
 
 public class Main {
-
+    // Флаги для отслеживания создания магазина и заказа
     public static boolean StoreCreated = false;
     public static boolean OrderCreated = false;
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-
+        // Создание объектов магазина и заказа
         Store store = new Store();
         Order order = new Order();
 
@@ -16,7 +16,9 @@ public class Main {
 
         System.out.println("\t~~Первая программа на Java~~");
 
+        // Главный цикл программы
         do {
+            // Отображение главного меню
             System.out.println("\tГлавное меню:");
             System.out.println("1. Создать магазин пластинок");
             System.out.println("2. Посмотреть информацию о магазине");
@@ -26,6 +28,7 @@ public class Main {
             System.out.println("6. Посмотреть информацию о заказе");
             System.out.println("0. Выход из программы\n");
 
+            // Ввод выбора пользователя
             System.out.print("Выберите действие: ");
             while (!scan.hasNextInt()) {
                 System.out.print("Некорректный ввод!\nВыберите действие: ");
@@ -34,6 +37,7 @@ public class Main {
             input = scan.nextInt();
             scan.nextLine(); // Очищаем буфер после ввода числа
 
+            // Обработка выбора пользователя
             switch (input) {
                 // 1. Создание магазина
                 case 1:
@@ -80,6 +84,7 @@ public class Main {
                     else
                         System.out.println("Прежде чем воспользоваться этой функцией, создайте магазин!\n");
                     break;
+                // 5. Создание заказа
                 case 5:
                     if(StoreCreated) {
                         order.inputOrderInfo(store);
@@ -87,17 +92,20 @@ public class Main {
                     }else
                         System.out.println("Прежде чем воспользоваться этой функцией, создайте магазин!\n");
                     break;
+                // 6. Информация о заказе
                 case 6:
                     if(StoreCreated && OrderCreated)
                         order.outputOrder();
                     else
                         System.out.println("Ни одного заказа не найдено!\n");
                     break;
+                // Выход из программы
                 case 0:
                     System.out.println("\n\t--------------");
                     System.out.println("\t До свидания!");
                     System.out.println("\t--------------");
                     break;
+                // Пользователь выбрал несуществующее действие
                 default:
                     System.out.println("Некорректный выбор!\n");
             }

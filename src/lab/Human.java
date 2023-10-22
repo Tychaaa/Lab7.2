@@ -25,7 +25,6 @@ public abstract class Human {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
     // Методы для получения имени человека
     public String getFirstName() {
         return firstName;
