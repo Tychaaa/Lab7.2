@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="260b935c-b345-4719-b76a-fe77a1b7016d" name="Changes" comment="Реализовал классы Employee и VinylRecord, добавил отчет .docx в .gitignore">
+    <list default="true" id="260b935c-b345-4719-b76a-fe77a1b7016d" name="Changes" comment="Начал реализацию классов Order и Store, оформил главное меню программы">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lab/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lab/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lab/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/Store.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,15 +36,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "settings.editor.selected.configurable": "inlay.hints"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -71,7 +70,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697874767991</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Начал реализацию классов Order и Store, оформил главное меню программы">
+      <option name="closed" value="true" />
+      <created>1697882794354</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1697882794354</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -88,6 +95,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Создал все необходимые классы (VinulRecord, Human, Customer, Employee, Order, Store), реализовал абстрактный класс Human и его класс-наследник Customer" />
     <MESSAGE value="Реализовал классы Employee и VinylRecord, добавил отчет .docx в .gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Реализовал классы Employee и VinylRecord, добавил отчет .docx в .gitignore" />
+    <MESSAGE value="Начал реализацию классов Order и Store, оформил главное меню программы" />
+    <option name="LAST_COMMIT_MESSAGE" value="Начал реализацию классов Order и Store, оформил главное меню программы" />
   </component>
 </project>
