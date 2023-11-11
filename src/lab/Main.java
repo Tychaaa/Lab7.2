@@ -6,11 +6,13 @@ public class Main {
     // Флаги для отслеживания создания магазина и заказа
     public static boolean StoreCreated = false;
     public static boolean OrderCreated = false;
+    // Добавляем переменную для хранения количества созданных заказов
+    private static int OrderCreatedCount = 0;
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         // Создание объектов магазина и заказа
         Store store = new Store();
-        Order order = new Order();
+        Order[] orders = new Order[100];
 
         int input;
 
@@ -30,6 +32,7 @@ public class Main {
             System.out.println("8. Посмотреть ассортимент магазина");
             System.out.println("9. Создать заказ");
             System.out.println("10. Посмотреть информацию о заказе");
+            System.out.println("11. Очистить список заказов");
             System.out.println("0. Выход из программы\n");
 
             // Ввод выбора пользователя
@@ -68,16 +71,28 @@ public class Main {
                     }
                     break;
                 case 2:
-                    store.addVinylRecordsToStore();
+                    if(StoreCreated)
+                        store.addVinylRecordsToStore();
+                    else
+                        System.out.println("Прежде чем воспользоваться этой функцией, создайте магазин!\n");
                     break;
                 case 3:
-                    store.addEmployeesToStore();
+                    if(StoreCreated)
+                        store.addEmployeesToStore();
+                    else
+                        System.out.println("Прежде чем воспользоваться этой функцией, создайте магазин!\n");
                     break;
                 case 4:
-                    store.removeVinylRecord();
+                    if(StoreCreated)
+                        store.removeVinylRecord();
+                    else
+                        System.out.println("Прежде чем воспользоваться этой функцией, создайте магазин!\n");
                     break;
                 case 5:
-                    store.removeEmployee();
+                    if(StoreCreated)
+                        store.removeEmployee();
+                    else
+                        System.out.println("Прежде чем воспользоваться этой функцией, создайте магазин!\n");
                     break;
                 // 2. Информация о магазине
                 case 6:
@@ -103,15 +118,28 @@ public class Main {
                 // 5. Создание заказа
                 case 9:
                     if(StoreCreated) {
-                        order.inputOrderInfo(store);
+                        Order newOrder = new Order();
+                        newOrder.inputOrderInfo(store);
+                        orders[OrderCreatedCount++] = newOrder;
                         OrderCreated = true;
                     }else
                         System.out.println("Прежде чем воспользоваться этой функцией, создайте магазин!\n");
                     break;
                 // 6. Информация о заказе
                 case 10:
-                    if(StoreCreated && OrderCreated)
-                        order.outputOrder();
+                    if(StoreCreated && OrderCreated) {
+                        Order outOrder = new Order();
+                        outOrder.outputOrder(orders);
+                    }
+                    else
+                        System.out.println("Ни одного заказа не найдено!\n");
+                    break;
+                case 11:
+                    if(StoreCreated && OrderCreated) {
+                        Order.clearOrders(orders);
+                        OrderCreatedCount = 0;
+                        OrderCreated = false;
+                    }
                     else
                         System.out.println("Ни одного заказа не найдено!\n");
                     break;
@@ -124,6 +152,10 @@ public class Main {
                 // Пользователь выбрал несуществующее действие
                 default:
                     System.out.println("Некорректный выбор!\n");
+            }
+            if (input != 0) {
+                System.out.println("Нажмите любую клавишу для продолжения!");
+                scan.nextLine(); // Ожидание ввода пользователя
             }
         }while (input != 0);
     }

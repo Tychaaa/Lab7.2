@@ -1,9 +1,12 @@
 package lab;
 
+import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 // Класс для объекта "Заказ"
 public class Order {
+    private static int orderNumberGenerator;  // Генератор номеров заказов
     private int orderNumber;             // Номер заказа
     private String orderDate;            // Дата заказа
     private Employee employee;           // Сотрудник магазина
@@ -60,6 +63,27 @@ public class Order {
         this.totalCost = totalCost;
     }
 
+    // Метод для получения сотрудника, оформившего заказ
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    // Метод для получения клиента, сделавшего заказ
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    // Метод для получения заказанной виниловой пластинки
+    public VinylRecord getOrderedRecord() {
+        return orderedRecord;
+    }
+
+    // Статический метод для генерации уникального номера заказа
+    public static int generateOrderNumber() {
+        Random random = new Random();
+        return random.nextInt(10000) + 1;  // Генерация случайного числа от 1 до 10000
+    }
+
     // Метод для ввода информации о заказе
     public void inputOrderInfo(Store store) {
         Scanner scanner = new Scanner(System.in);
@@ -67,9 +91,11 @@ public class Order {
         System.out.println("\n\t~~Оформление заказа~~");
         System.out.println("-------------------------------------------");
 
-        System.out.print("Введите номер заказа: ");
-        setOrderNumber(scanner.nextInt());
-        scanner.nextLine(); // Очищаем буфер после ввода числа
+        orderNumberGenerator = generateOrderNumber();
+        setOrderNumber(orderNumberGenerator);
+
+        System.out.println("\tЗаказ №" + orderNumberGenerator);
+        System.out.println("-------------------------------------------");
 
         System.out.print("Введите дату заказа: ");
         setOrderDate(scanner.nextLine());
@@ -77,12 +103,25 @@ public class Order {
 
         // Выводим список доступных сотрудников для выбора
         store.outputEmployeesShortList();
-        System.out.print("Выберите номер сотрудника: ");
-        int employeeIndex = scanner.nextInt();
+
+        // Ввод индекса сотрудника с проверкой
+        int employeeIndex;
+        do {
+            System.out.print("Выберите номер сотрудника: ");
+            while (!scanner.hasNextInt()) {
+                System.out.print("Некорректный ввод! Пожалуйста, введите число: ");
+                scanner.next(); // Очищаем буфер после некорректного ввода
+            }
+            employeeIndex = scanner.nextInt();
+            if (employeeIndex < 1 || employeeIndex > store.getEmployeesInStore().length) {
+                System.out.println("Некорректный номер сотрудника. Пожалуйста, введите существующий номер.");
+            }
+        } while (employeeIndex < 1 || employeeIndex > store.getEmployeesInStore().length);
+
         employee = store.getEmployeesInStore()[employeeIndex - 1];
         System.out.println("-------------------------------------------");
 
-        // Выводим список доступных клиентов для выбора
+        // Вводим данные клиента
         System.out.println("Введите информацию о клиенте, оформившем заказ:");
         customer = new Customer();
         customer.inputCustomer();
@@ -90,9 +129,23 @@ public class Order {
 
         // Выводим список доступных виниловых пластинок для выбора
         store.outputVinylRecordsShortList();
-        System.out.print("Выберите номер виниловой пластинки: ");
-        int recordIndex = scanner.nextInt();
+
+        // Ввод индекса виниловой пластинки с проверкой
+        int recordIndex;
+        do {
+            System.out.print("Выберите номер виниловой пластинки: ");
+            while (!scanner.hasNextInt()) {
+                System.out.print("Некорректный ввод! Пожалуйста, введите число: ");
+                scanner.next(); // Очищаем буфер после некорректного ввода
+            }
+            recordIndex = scanner.nextInt();
+            if (recordIndex < 1 || recordIndex > store.getVinylRecordsInStore().length) {
+                System.out.println("Некорректный номер виниловой пластинки. Пожалуйста, введите существующий номер.");
+            }
+        } while (recordIndex < 1 || recordIndex > store.getVinylRecordsInStore().length);
+
         orderedRecord = store.getVinylRecordsInStore()[recordIndex - 1];
+        System.out.println("-------------------------------------------");
 
         System.out.print("Введите количество заказанных виниловых пластинок: ");
         setQuantityOrdered(scanner.nextInt());
@@ -104,17 +157,29 @@ public class Order {
     }
 
     // Метод для вывода информации о заказе
-    public void outputOrder() {
-        System.out.println("\n\t~~Информация о заказе~~");
+    public void outputOrder(Order[] orders) {
+        System.out.println("\n\t~~Информация о заказах~~");
         System.out.println("-------------------------------------------");
-        System.out.println("Номер заказа: " + getOrderNumber());
-        System.out.println("Дата заказа: " + getOrderDate());
-        System.out.println("Сотрудник: " + employee.getFirstName() + " " + employee.getLastName());
-        System.out.println("Клиент: " + customer.getFirstName() + " " + customer.getLastName());
-        System.out.println("Заказанная виниловая пластинка: " + orderedRecord.getAlbumName() + " - " + orderedRecord.getArtist());
-        System.out.println("Количество заказанных виниловых пластинок: " + getQuantityOrdered());
-        System.out.println("Общая стоимость заказа: " + getTotalCost());
-        System.out.println("-------------------------------------------\n");
+
+        for (Order order : orders) {
+            if (order != null) {
+                System.out.println("\tЗаказ №" + order.getOrderNumber());
+                System.out.println("Дата заказа: " + order.getOrderDate());
+                System.out.println("Сотрудник: " + order.getEmployee().getFirstName() + " " + order.getEmployee().getLastName());
+                System.out.println("Клиент: " + order.getCustomer().getFirstName() + " " + order.getCustomer().getLastName());
+                System.out.println("Заказанная виниловая пластинка: " + order.getOrderedRecord().getAlbumName() + " - " + order.getOrderedRecord().getArtist());
+                System.out.println("Количество заказанных виниловых пластинок: " + order.getQuantityOrdered());
+                System.out.println("Общая стоимость заказа: " + order.getTotalCost());
+                System.out.println("-------------------------------------------");
+            }
+        }
+        System.out.println();
+    }
+
+    // Статический метод для очистки массива заказов
+    public static void clearOrders(Order[] orders) {
+        Arrays.fill(orders, null);
+        System.out.println("Список заказов удалён!\n");
     }
 
 }

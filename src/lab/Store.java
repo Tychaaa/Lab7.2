@@ -202,15 +202,18 @@ public class Store {
         outputVinylRecordsShortList();
         System.out.println("-------------------------------------------");
 
-        System.out.print("Выберите номер виниловой пластинки, которую вы хотите удалить: ");
-        int recordIndex = scanner.nextInt();
+        int recordIndex;
 
-        if (recordIndex < 1 || recordIndex > numVinylRecords) {
-            System.out.println("-------------------------------------------");
-            System.out.println("Ошибка: введен некорректный номер виниловой пластинки.");
-            System.out.println();
-            return;
-        }
+        do {
+            System.out.print("Выберите номер виниловой пластинки, которую вы хотите удалить: ");
+            recordIndex = scanner.nextInt();
+
+            if (recordIndex < 1 || recordIndex > numVinylRecords) {
+                System.out.println("-------------------------------------------");
+                System.out.println("Ошибка: введен некорректный номер виниловой пластинки.");
+                System.out.println("-------------------------------------------");
+            }
+        } while (recordIndex < 1 || recordIndex > numVinylRecords);
 
         // Создаем новый массив с уменьшенным размером
         VinylRecord[] newVinylRecords = new VinylRecord[numVinylRecords - 1];
@@ -248,15 +251,18 @@ public class Store {
         outputEmployeesShortList();
         System.out.println("-------------------------------------------");
 
-        System.out.print("Выберите номер сотрудника, которого вы хотите удалить: ");
-        int employeeIndex = scanner.nextInt();
+        int employeeIndex;
 
-        if (employeeIndex < 1 || employeeIndex > numEmployees) {
-            System.out.println("-------------------------------------------");
-            System.out.println("Ошибка: введен некорректный номер сотрудника.");
-            System.out.println();
-            return;
-        }
+        do {
+            System.out.print("Выберите номер сотрудника, которого вы хотите удалить: ");
+            employeeIndex = scanner.nextInt();
+
+            if (employeeIndex < 1 || employeeIndex > numEmployees) {
+                System.out.println("-------------------------------------------");
+                System.out.println("Ошибка: введен некорректный номер сотрудника.");
+                System.out.println("-------------------------------------------");
+            }
+        } while (employeeIndex < 1 || employeeIndex > numEmployees);
 
         // Создаем новый массив с уменьшенным размером
         Employee[] newEmployees = new Employee[numEmployees - 1];
