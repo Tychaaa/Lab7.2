@@ -6,6 +6,8 @@ import java.util.Scanner;
 public class Store {
     private static final int MAX_RECORDS = 100; // Максимальное количество виниловых пластинок в магазине
     private static final int MAX_EMPLOYEES = 50; // Максимальное количество сотрудников магазина
+    private static int numVinylRecords;
+    private static int numEmployees;
 
     private String storeName;    // Название магазина
     private String storeAddress; // Адрес магазина
@@ -63,7 +65,7 @@ public class Store {
         System.out.println("-------------------------------------------");
 
         System.out.print("Введите количество виниловых пластинок, которые вы хотите добавить: ");
-        int numVinylRecords = scanner.nextInt();
+        numVinylRecords = scanner.nextInt();
         scanner.nextLine(); // Очищаем буфер после ввода числа
 
         System.out.println("-------------------------------------------");
@@ -76,7 +78,7 @@ public class Store {
         }
 
         System.out.print("Введите количество сотрудников, которых вы хотите добавить: ");
-        int numEmployees = scanner.nextInt();
+        numEmployees = scanner.nextInt();
         scanner.nextLine(); // Очищаем буфер после ввода числа
 
         System.out.println("-------------------------------------------");
@@ -88,6 +90,92 @@ public class Store {
             System.out.println("-------------------------------------------");
         }
         System.out.println();
+    }
+
+    public void addVinylRecordsToStore(){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("\n\t~~Добавление новых пластинок в магазин~~");
+
+        System.out.println("-------------------------------------------");
+        System.out.print("Введите количество виниловых пластинок, которые вы хотите добавить: ");
+        int additionalRecords = scanner.nextInt();
+        scanner.nextLine(); // Очищаем буфер после ввода числа
+
+        int newSize = numVinylRecords + additionalRecords;
+
+        if (newSize > MAX_RECORDS) {
+            System.out.println("Ошибка: превышено максимальное количество виниловых пластинок в магазине.");
+            return;
+        }
+
+        VinylRecord[] newVinylRecords = new VinylRecord[newSize];
+
+        // Копирование существующих записей
+        System.arraycopy(vinylRecordsInStore, 0, newVinylRecords, 0, numVinylRecords);
+
+        System.out.println("-------------------------------------------");
+
+        // Добавление новых записей
+        for (int i = numVinylRecords; i < newSize; i++) {
+            System.out.println("Ввод информации о виниловой пластинке #" + (i + 1));
+            newVinylRecords[i] = new VinylRecord();
+            newVinylRecords[i].inputVinylRecord();
+            System.out.println("-------------------------------------------");
+        }
+
+        // Обновление массива виниловых пластинок
+        vinylRecordsInStore = newVinylRecords;
+        numVinylRecords = newSize;
+
+        System.out.println("Виниловые пластинки успешно добавлены в магазин.");
+    }
+
+    public void addEmployeesToStore(){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("\n\t~~Добавление новых сотрудников в магазин~~");
+
+        System.out.println("-------------------------------------------");
+        System.out.print("Введите количество сотрудников, которых вы хотите добавить: ");
+        int additionalEmployees = scanner.nextInt();
+        scanner.nextLine(); // Очищаем буфер после ввода числа
+
+        int newSize = numEmployees + additionalEmployees;
+
+        if (newSize > MAX_EMPLOYEES) {
+            System.out.println("Ошибка: превышено максимальное количество сотрудников в магазине.");
+            return;
+        }
+
+        Employee[] newEmployees = new Employee[newSize];
+
+        // Копирование существующих сотрудников
+        System.arraycopy(employeesInStore, 0, newEmployees, 0, numEmployees);
+
+        System.out.println("-------------------------------------------");
+
+        // Добавление новых сотрудников
+        for (int i = numEmployees; i < newSize; i++) {
+            System.out.println("Ввод информации о дополнительном сотруднике #" + (i + 1));
+            newEmployees[i] = new Employee();
+            newEmployees[i].inputEmployee();
+            System.out.println("-------------------------------------------");
+        }
+
+        // Обновление массива сотрудников
+        employeesInStore = newEmployees;
+        numEmployees = newSize;
+
+        System.out.println("Сотрудники успешно добавлены в магазин.");
+    }
+
+    public void removeVinylRecord(){
+
+    }
+
+    public void removeEmployee(){
+
     }
 
     // Метод для вывода информации о введенных сотрудниках

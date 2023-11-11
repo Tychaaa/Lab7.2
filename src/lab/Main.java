@@ -14,18 +14,22 @@ public class Main {
 
         int input;
 
-        System.out.println("\t~~Первая программа на Java~~");
+        System.out.println("\t~~Модификация программы из лабораторной работы №3~~");
 
         // Главный цикл программы
         do {
             // Отображение главного меню
             System.out.println("\tГлавное меню:");
             System.out.println("1. Создать магазин пластинок");
-            System.out.println("2. Посмотреть информацию о магазине");
-            System.out.println("3. Посмотреть информацию о сотрудниках");
-            System.out.println("4. Посмотреть ассортимент магазина");
-            System.out.println("5. Создать заказ");
-            System.out.println("6. Посмотреть информацию о заказе");
+            System.out.println("2. Добавить пластинки в магазин");
+            System.out.println("3. Добавить сотрудников в магазин");
+            System.out.println("4. Удалить пластинку из ассортимента");
+            System.out.println("5. Удалить сотрудника из магазина");
+            System.out.println("6. Посмотреть информацию о магазине");
+            System.out.println("7. Посмотреть информацию о сотрудниках");
+            System.out.println("8. Посмотреть ассортимент магазина");
+            System.out.println("9. Создать заказ");
+            System.out.println("10. Посмотреть информацию о заказе");
             System.out.println("0. Выход из программы\n");
 
             // Ввод выбора пользователя
@@ -63,29 +67,35 @@ public class Main {
                         }
                     }
                     break;
-                // 2. Информация о магазине
                 case 2:
+                    store.addVinylRecordsToStore();
+                    break;
+                case 3:
+                    store.addEmployeesToStore();
+                    break;
+                // 2. Информация о магазине
+                case 6:
                     if(StoreCreated)
                         store.outputStoreInfo();
                     else
                         System.out.println("Прежде чем воспользоваться этой функцией, создайте магазин!\n");
                     break;
                 // 3. Информация о сотрудниках
-                case 3:
+                case 7:
                     if(StoreCreated)
                         store.outputEmployees();
                     else
                         System.out.println("Прежде чем воспользоваться этой функцией, создайте магазин!\n");
                     break;
                 // 4. Информация о пластинках
-                case 4:
+                case 8:
                     if(StoreCreated)
                         store.outputVinylRecords();
                     else
                         System.out.println("Прежде чем воспользоваться этой функцией, создайте магазин!\n");
                     break;
                 // 5. Создание заказа
-                case 5:
+                case 9:
                     if(StoreCreated) {
                         order.inputOrderInfo(store);
                         OrderCreated = true;
@@ -93,7 +103,7 @@ public class Main {
                         System.out.println("Прежде чем воспользоваться этой функцией, создайте магазин!\n");
                     break;
                 // 6. Информация о заказе
-                case 6:
+                case 10:
                     if(StoreCreated && OrderCreated)
                         order.outputOrder();
                     else
