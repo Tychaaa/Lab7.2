@@ -102,6 +102,14 @@ public class Store {
         int additionalRecords = scanner.nextInt();
         scanner.nextLine(); // Очищаем буфер после ввода числа
 
+        if (additionalRecords == 0)
+        {
+            System.out.println("Добавление отменено!");
+            System.out.println("-------------------------------------------");
+            System.out.println();
+            return;
+        }
+
         int newSize = numVinylRecords + additionalRecords;
 
         if (newSize > MAX_RECORDS) {
@@ -141,6 +149,14 @@ public class Store {
         int additionalEmployees = scanner.nextInt();
         scanner.nextLine(); // Очищаем буфер после ввода числа
 
+        if (additionalEmployees == 0)
+        {
+            System.out.println("Добавление отменено!");
+            System.out.println("-------------------------------------------");
+            System.out.println();
+            return;
+        }
+
         int newSize = numEmployees + additionalEmployees;
 
         if (newSize > MAX_EMPLOYEES) {
@@ -171,11 +187,95 @@ public class Store {
     }
 
     public void removeVinylRecord(){
+        Scanner scanner = new Scanner(System.in);
 
+        if (numVinylRecords == 1) {
+            System.out.println("\n\t~~ПРЕДУПРЕЖДЕНИЕ~~");
+            System.out.println("Невозможно удалить единственную пластинку!\n");
+            return;
+        }
+
+        System.out.println("\n\t~~Удаление виниловых пластинок из магазина~~");
+
+        System.out.println("-------------------------------------------");
+        // Выводим список доступных виниловых пластинок для выбора
+        outputVinylRecordsShortList();
+        System.out.println("-------------------------------------------");
+
+        System.out.print("Выберите номер виниловой пластинки, которую вы хотите удалить: ");
+        int recordIndex = scanner.nextInt();
+
+        if (recordIndex < 1 || recordIndex > numVinylRecords) {
+            System.out.println("-------------------------------------------");
+            System.out.println("Ошибка: введен некорректный номер виниловой пластинки.");
+            System.out.println();
+            return;
+        }
+
+        // Создаем новый массив с уменьшенным размером
+        VinylRecord[] newVinylRecords = new VinylRecord[numVinylRecords - 1];
+
+        // Копируем элементы до удаляемого индекса
+        System.arraycopy(vinylRecordsInStore, 0, newVinylRecords, 0, recordIndex - 1);
+
+        // Копируем элементы после удаляемого индекса
+        System.arraycopy(vinylRecordsInStore, recordIndex, newVinylRecords, recordIndex - 1, numVinylRecords - recordIndex);
+
+        // Обновляем массив виниловых пластинок
+        vinylRecordsInStore = newVinylRecords;
+        numVinylRecords--;
+
+        System.out.println("-------------------------------------------");
+        System.out.println("Виниловая пластинка успешно удалена из магазина.");
+        System.out.println("-------------------------------------------");
+
+        System.out.println();
     }
 
     public void removeEmployee(){
+        Scanner scanner = new Scanner(System.in);
 
+        if (numEmployees == 1) {
+            System.out.println("\n\t~~ПРЕДУПРЕЖДЕНИЕ~~");
+            System.out.println("Невозможно удалить единственного сотрудника!\n");
+            return;
+        }
+
+        System.out.println("\n\t~~Удаление сотрудника из магазина~~");
+
+        System.out.println("-------------------------------------------");
+        // Выводим список доступных сотрудников для выбора
+        outputEmployeesShortList();
+        System.out.println("-------------------------------------------");
+
+        System.out.print("Выберите номер сотрудника, которого вы хотите удалить: ");
+        int employeeIndex = scanner.nextInt();
+
+        if (employeeIndex < 1 || employeeIndex > numEmployees) {
+            System.out.println("-------------------------------------------");
+            System.out.println("Ошибка: введен некорректный номер сотрудника.");
+            System.out.println();
+            return;
+        }
+
+        // Создаем новый массив с уменьшенным размером
+        Employee[] newEmployees = new Employee[numEmployees - 1];
+
+        // Копируем элементы до удаляемого индекса
+        System.arraycopy(employeesInStore, 0, newEmployees, 0, employeeIndex - 1);
+
+        // Копируем элементы после удаляемого индекса
+        System.arraycopy(employeesInStore, employeeIndex, newEmployees, employeeIndex - 1, numEmployees - employeeIndex);
+
+        // Обновляем массив сотрудников
+        employeesInStore = newEmployees;
+        numEmployees--;
+
+        System.out.println("-------------------------------------------");
+        System.out.println("Сотрудник успешно удален из магазина.");
+        System.out.println("-------------------------------------------");
+
+        System.out.println();
     }
 
     // Метод для вывода информации о введенных сотрудниках

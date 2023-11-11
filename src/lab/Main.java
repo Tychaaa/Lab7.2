@@ -54,11 +54,11 @@ public class Main {
                         System.out.println("\n\t\t~~ПРЕДУПРЕЖДЕНИЕ~~");
                         System.out.println("-------------------------------------------");
                         System.out.println("Магазин уже создан. Хотите создать новый магазин?");
-                        System.out.print("Введите ответ (да/нет): ");
+                        System.out.print("Введите ответ (yes/no): ");
                         String response = scan.nextLine().toLowerCase();
                         System.out.println("-------------------------------------------");
 
-                        if (response.equals("да")) {
+                        if (response.equals("yes")) {
                             store.inputStoreInfo();
                             OrderCreated = false;
                         } else {
@@ -72,6 +72,12 @@ public class Main {
                     break;
                 case 3:
                     store.addEmployeesToStore();
+                    break;
+                case 4:
+                    store.removeVinylRecord();
+                    break;
+                case 5:
+                    store.removeEmployee();
                     break;
                 // 2. Информация о магазине
                 case 6:

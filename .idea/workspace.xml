@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="260b935c-b345-4719-b76a-fe77a1b7016d" name="Changes" comment="Оформил логику программы, реализовал все оставшиеся классы и методы">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="260b935c-b345-4719-b76a-fe77a1b7016d" name="Changes" comment="Добавил новые функции в главном меню и реализовал методы для добавления пластинок и сотрудников в уже существующий магазин">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lab/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lab/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/Store.java" afterDir="false" />
@@ -110,7 +109,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697965370483</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Добавил новые функции в главном меню и реализовал методы для добавления пластинок и сотрудников в уже существующий магазин">
+      <option name="closed" value="true" />
+      <created>1699684787939</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1699684787939</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -130,6 +137,7 @@
     <MESSAGE value="Начал реализацию классов Order и Store, оформил главное меню программы" />
     <MESSAGE value="Реализовал методы ввода информации о магазине, вывода информации о всем магазине, а также об отдельных его элементах. Начал реализацию главного меню" />
     <MESSAGE value="Оформил логику программы, реализовал все оставшиеся классы и методы" />
-    <option name="LAST_COMMIT_MESSAGE" value="Оформил логику программы, реализовал все оставшиеся классы и методы" />
+    <MESSAGE value="Добавил новые функции в главном меню и реализовал методы для добавления пластинок и сотрудников в уже существующий магазин" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил новые функции в главном меню и реализовал методы для добавления пластинок и сотрудников в уже существующий магазин" />
   </component>
 </project>
