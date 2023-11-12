@@ -128,8 +128,7 @@ public class Main {
                 // 6. Информация о заказе
                 case 10:
                     if(StoreCreated && OrderCreated) {
-                        Order outOrder = new Order();
-                        outOrder.outputOrder(orders);
+                        Order.outputOrder(orders);
                     }
                     else
                         System.out.println("Ни одного заказа не найдено!\n");

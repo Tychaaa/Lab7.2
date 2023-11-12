@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="260b935c-b345-4719-b76a-fe77a1b7016d" name="Changes" comment="Реализовал методы для удаления пластинок и сотрудников по индексу">
+    <list default="true" id="260b935c-b345-4719-b76a-fe77a1b7016d" name="Changes" comment="Добавил новый метод для удалению массива заказов, добавил новые геттеры, добавил статическую переменную и статические методы, сделал защиты от некорректного ввода">
+      <change afterPath="$PROJECT_DIR$/src/lab/OrderHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lab/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lab/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lab/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/Store.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,15 +37,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "settings.editor.selected.configurable": "File.Encoding"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Lab4.2" />
@@ -126,7 +126,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699687181900</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Добавил новый метод для удалению массива заказов, добавил новые геттеры, добавил статическую переменную и статические методы, сделал защиты от некорректного ввода">
+      <option name="closed" value="true" />
+      <created>1699696457264</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1699696457264</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -148,6 +156,7 @@
     <MESSAGE value="Оформил логику программы, реализовал все оставшиеся классы и методы" />
     <MESSAGE value="Добавил новые функции в главном меню и реализовал методы для добавления пластинок и сотрудников в уже существующий магазин" />
     <MESSAGE value="Реализовал методы для удаления пластинок и сотрудников по индексу" />
-    <option name="LAST_COMMIT_MESSAGE" value="Реализовал методы для удаления пластинок и сотрудников по индексу" />
+    <MESSAGE value="Добавил новый метод для удалению массива заказов, добавил новые геттеры, добавил статическую переменную и статические методы, сделал защиты от некорректного ввода" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил новый метод для удалению массива заказов, добавил новые геттеры, добавил статическую переменную и статические методы, сделал защиты от некорректного ввода" />
   </component>
 </project>

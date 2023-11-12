@@ -152,12 +152,14 @@ public class Order {
         System.out.println("-------------------------------------------\n");
 
         // Вычисляем общую стоимость заказа
-        setTotalCost(orderedRecord.getPrice() * getQuantityOrdered());
-        totalCost = orderedRecord.getPrice() * quantityOrdered;
+        // Создаем объект вспомогательного класса для вычисления итоговой суммы заказа
+        OrderHelper result = calculateTotalCost(quantityOrdered, orderedRecord);
+        totalCost = result.getValue();
+        setTotalCost(totalCost);
     }
 
     // Метод для вывода информации о заказе
-    public void outputOrder(Order[] orders) {
+    public static void outputOrder(Order[] orders) {
         System.out.println("\n\t~~Информация о заказах~~");
         System.out.println("-------------------------------------------");
 
@@ -179,7 +181,15 @@ public class Order {
     // Статический метод для очистки массива заказов
     public static void clearOrders(Order[] orders) {
         Arrays.fill(orders, null);
-        System.out.println("Список заказов удалён!\n");
+        System.out.println("\n-------------------------------------------");
+        System.out.println("Список заказов удалён!");
+        System.out.println("-------------------------------------------");
+    }
+
+    // Метод для подсчета итоговой стоимости заказа с помощью вспомогательного класса
+    public static OrderHelper calculateTotalCost(int quantityOrdered, VinylRecord orderedRecord) {
+        float sum = orderedRecord.getPrice() * quantityOrdered;
+        return new OrderHelper(sum);
     }
 
 }
