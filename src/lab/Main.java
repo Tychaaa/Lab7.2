@@ -70,52 +70,56 @@ public class Main {
                         }
                     }
                     break;
+                // 2. Добавление пластинок
                 case 2:
                     if(StoreCreated)
                         store.addVinylRecordsToStore();
                     else
                         System.out.println("Прежде чем воспользоваться этой функцией, создайте магазин!\n");
                     break;
+                // 3. Добавление сотрудников
                 case 3:
                     if(StoreCreated)
                         store.addEmployeesToStore();
                     else
                         System.out.println("Прежде чем воспользоваться этой функцией, создайте магазин!\n");
                     break;
+                // 4. Удаление пластинок
                 case 4:
                     if(StoreCreated)
                         store.removeVinylRecord();
                     else
                         System.out.println("Прежде чем воспользоваться этой функцией, создайте магазин!\n");
                     break;
+                // 5. Удаление сотрудников
                 case 5:
                     if(StoreCreated)
                         store.removeEmployee();
                     else
                         System.out.println("Прежде чем воспользоваться этой функцией, создайте магазин!\n");
                     break;
-                // 2. Информация о магазине
+                // 6. Информация о магазине
                 case 6:
                     if(StoreCreated)
                         store.outputStoreInfo();
                     else
                         System.out.println("Прежде чем воспользоваться этой функцией, создайте магазин!\n");
                     break;
-                // 3. Информация о сотрудниках
+                // 7. Информация о сотрудниках
                 case 7:
                     if(StoreCreated)
                         store.outputEmployees();
                     else
                         System.out.println("Прежде чем воспользоваться этой функцией, создайте магазин!\n");
                     break;
-                // 4. Информация о пластинках
+                // 8. Информация о пластинках
                 case 8:
                     if(StoreCreated)
                         store.outputVinylRecords();
                     else
                         System.out.println("Прежде чем воспользоваться этой функцией, создайте магазин!\n");
                     break;
-                // 5. Создание заказа
+                // 9. Создание заказа
                 case 9:
                     if(StoreCreated) {
                         Order newOrder = new Order();
@@ -125,7 +129,7 @@ public class Main {
                     }else
                         System.out.println("Прежде чем воспользоваться этой функцией, создайте магазин!\n");
                     break;
-                // 6. Информация о заказе
+                // 10. Информация о заказе
                 case 10:
                     if(StoreCreated && OrderCreated) {
                         Order.outputOrder(orders);
@@ -133,6 +137,7 @@ public class Main {
                     else
                         System.out.println("Ни одного заказа не найдено!\n");
                     break;
+                // 10. Очистка списка заказов
                 case 11:
                     if(StoreCreated && OrderCreated) {
                         Order.clearOrders(orders);
@@ -152,11 +157,11 @@ public class Main {
                 default:
                     System.out.println("Некорректный выбор!\n");
             }
+            // Прерывание программы пока пользователь не нажмет клавишу
             if (input != 0) {
                 System.out.println("Нажмите любую клавишу для продолжения!");
                 scan.nextLine(); // Ожидание ввода пользователя
             }
         }while (input != 0);
     }
-
 }

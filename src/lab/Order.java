@@ -7,13 +7,13 @@ import java.util.Scanner;
 // Класс для объекта "Заказ"
 public class Order {
     private static int orderNumberGenerator;  // Генератор номеров заказов
-    private int orderNumber;             // Номер заказа
-    private String orderDate;            // Дата заказа
-    private Employee employee;           // Сотрудник магазина
-    private Customer customer;           // Клиент
-    private VinylRecord orderedRecord;   // Заказанная виниловая пластинка
-    private int quantityOrdered;         // Кол/во заказанных виниловых пластинок
-    private float totalCost;             // Общая стоимость заказа
+    private int orderNumber;                  // Номер заказа
+    private String orderDate;                 // Дата заказа
+    private Employee employee;                // Сотрудник магазина
+    private Customer customer;                // Клиент
+    private VinylRecord orderedRecord;        // Заказанная виниловая пластинка
+    private int quantityOrdered;              // Кол/во заказанных виниловых пластинок
+    private float totalCost;                  // Общая стоимость заказа
 
     // Конструктор без параметров
     public Order(){

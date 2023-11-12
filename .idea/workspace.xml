@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="260b935c-b345-4719-b76a-fe77a1b7016d" name="Changes" comment="Добавил новый метод для удалению массива заказов, добавил новые геттеры, добавил статическую переменную и статические методы, сделал защиты от некорректного ввода">
-      <change afterPath="$PROJECT_DIR$/src/lab/OrderHelper.java" afterDir="false" />
+    <list default="true" id="260b935c-b345-4719-b76a-fe77a1b7016d" name="Changes" comment="Создал вспомогательный класс и метод для подсчёта итоговой суммы заказа, модифицировал вывод информации о заказе,">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lab/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lab/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab/Order.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699696457264</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Создал вспомогательный класс и метод для подсчёта итоговой суммы заказа, модифицировал вывод информации о заказе,">
+      <option name="closed" value="true" />
+      <created>1699771619534</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1699771619534</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -157,6 +163,7 @@
     <MESSAGE value="Добавил новые функции в главном меню и реализовал методы для добавления пластинок и сотрудников в уже существующий магазин" />
     <MESSAGE value="Реализовал методы для удаления пластинок и сотрудников по индексу" />
     <MESSAGE value="Добавил новый метод для удалению массива заказов, добавил новые геттеры, добавил статическую переменную и статические методы, сделал защиты от некорректного ввода" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил новый метод для удалению массива заказов, добавил новые геттеры, добавил статическую переменную и статические методы, сделал защиты от некорректного ввода" />
+    <MESSAGE value="Создал вспомогательный класс и метод для подсчёта итоговой суммы заказа, модифицировал вывод информации о заказе," />
+    <option name="LAST_COMMIT_MESSAGE" value="Создал вспомогательный класс и метод для подсчёта итоговой суммы заказа, модифицировал вывод информации о заказе," />
   </component>
 </project>

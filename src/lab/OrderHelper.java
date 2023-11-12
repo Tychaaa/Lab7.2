@@ -3,7 +3,7 @@ package lab;
 // Вспомогательный класс для класса "Order"
 public class OrderHelper {
 
-    private float value;
+    private float value;     // Переменная для хранения итоговой суммы
 
     // Конструктор с параметрами
     public OrderHelper (float value){
