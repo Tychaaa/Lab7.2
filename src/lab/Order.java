@@ -181,9 +181,9 @@ public class Order {
     // Статический метод для очистки массива заказов
     public static void clearOrders(Order[] orders) {
         Arrays.fill(orders, null);
-        System.out.println("\n-------------------------------------------");
-        System.out.println("Список заказов удалён!");
         System.out.println("-------------------------------------------");
+        System.out.println("Список заказов удалён!");
+        System.out.println("-------------------------------------------\n");
     }
 
     // Метод для подсчета итоговой стоимости заказа с помощью вспомогательного класса

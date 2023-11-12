@@ -139,13 +139,26 @@ public class Main {
                     break;
                 // 10. Очистка списка заказов
                 case 11:
-                    if(StoreCreated && OrderCreated) {
-                        Order.clearOrders(orders);
-                        OrderCreatedCount = 0;
-                        OrderCreated = false;
-                    }
-                    else
+                    if (StoreCreated && OrderCreated) {
+                        System.out.println("\n\t\t~~ВНИМАНИЕ~~");
+                        System.out.println("-------------------------------------------");
+                        System.out.println("Вы уверены, что хотите удалить список заказов?");
+                        System.out.print("Введите ответ (yes/no): ");
+                        String confirm = scan.nextLine().toLowerCase();
+
+                        if (confirm.equals("yes")) {
+                            Order.clearOrders(orders);
+                            OrderCreatedCount = 0;
+                            OrderCreated = false;
+                        } else {
+                            System.out.println("-------------------------------------------");
+                            System.out.println("Операция удаления отменена.");
+                            System.out.println("-------------------------------------------\n");
+                        }
+
+                    } else {
                         System.out.println("Ни одного заказа не найдено!\n");
+                    }
                     break;
                 // Выход из программы
                 case 0:
