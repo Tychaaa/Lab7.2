@@ -1,5 +1,6 @@
 package lab;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -35,13 +36,27 @@ public class Main {
             System.out.println("11. Очистить список заказов");
             System.out.println("0. Выход из программы\n");
 
-            // Ввод выбора пользователя
-            System.out.print("Выберите действие: ");
-            while (!scan.hasNextInt()) {
-                System.out.print("Некорректный ввод!\nВыберите действие: ");
-                scan.next(); // Очищаем буфер после некорректного ввода
+            // Ввод выбора пользователя с защитой от некорректного ввода
+            while (true) {
+                try {
+                    System.out.print("Выберите действие: ");
+                    input = scan.nextInt();
+
+                    if (input < 0){
+                        throw new IllegalArgumentException("Некорректный выбор! Пожалуйста, введите существующий номер.");
+                    }
+
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("\nОшибка: Введите целое число.\n");
+                    scan.nextLine(); // Очищаем буфер после некорректного ввода
+                } catch (IllegalArgumentException e) {
+                    System.out.println("\nОшибка: " + e.getMessage() + "\n");
+                    scan.nextLine(); // Очищаем буфер после некорректного ввода
+                }
+
             }
-            input = scan.nextInt();
+
             scan.nextLine(); // Очищаем буфер после ввода числа
 
             // Обработка выбора пользователя
