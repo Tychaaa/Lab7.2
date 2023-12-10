@@ -1,5 +1,6 @@
 package lab;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // Класс для объекта "Сотрудник"
@@ -27,6 +28,9 @@ public class Employee extends Human {
 
     // Метод для установки зарплаты сотрудника
     public void setSalary(float salary) {
+        if (salary <= 0) {
+            throw new IllegalArgumentException("Зарплата должна быть положительным числом.");
+        }
         this.salary = salary;
     }
 
@@ -55,8 +59,19 @@ public class Employee extends Human {
         System.out.print("Введите должность сотрудника: ");
         setPosition(scanner.nextLine());
 
-        System.out.print("Введите зарплату сотрудника: ");
-        setSalary(scanner.nextFloat());
+        // Ввод зарплаты с защитой от некорректного ввода
+        while (true) {
+            try {
+                System.out.print("Введите зарплату сотрудника: ");
+                setSalary(scanner.nextFloat());
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("\nОшибка: Введена некорректная зарплата. Зарплата должна быть числом.\n");
+                scanner.nextLine(); // Очищаем буфер
+            } catch (IllegalArgumentException e) {
+                System.out.println("\nОшибка: " + e.getMessage() + "\n");
+            }
+        }
     }
 
     // Метод для вывода информации о сотруднике

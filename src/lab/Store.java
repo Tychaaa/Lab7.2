@@ -95,9 +95,26 @@ public class Store {
             System.out.println("-------------------------------------------");
         }
 
-        System.out.print("Введите количество сотрудников, которых вы хотите добавить: ");
-        numEmployees = scanner.nextInt();
-        scanner.nextLine(); // Очищаем буфер после ввода числа
+        // Ввод количества сотрудников с защитой от некорректного ввода
+        while (true) {
+            try {
+                System.out.print("Введите количество сотрудников, которых вы хотите добавить: ");
+                numEmployees = scanner.nextInt();
+
+                if (numEmployees > 0) {
+                    // Выход из цикла, если ввод успешен и число больше нуля
+                    scanner.nextLine(); // Очищаем буфер после ввода числа
+                    break;
+                } else {
+                    throw new IllegalArgumentException("Количество сотрудников должно быть положительным целым числом.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("\nОшибка: Введено некорректное количество. Количество должно быть числом.\n");
+                scanner.nextLine(); // Очищаем буфер
+            } catch (IllegalArgumentException e) {
+                System.out.println("\nОшибка: " + e.getMessage() + "\n");
+            }
+        }
 
         System.out.println("-------------------------------------------");
         employeesInStore = new Employee[numEmployees];
@@ -116,9 +133,27 @@ public class Store {
         System.out.println("\n\t~~Добавление новых пластинок в магазин~~");
 
         System.out.println("-------------------------------------------");
-        System.out.print("Введите количество виниловых пластинок, которые вы хотите добавить: ");
-        int additionalRecords = scanner.nextInt();
-        scanner.nextLine(); // Очищаем буфер после ввода числа
+        int additionalRecords;
+        // Ввод количества виниловых пластинок с защитой от некорректного ввода
+        while (true) {
+            try {
+                System.out.print("Введите количество виниловых пластинок, которые вы хотите добавить: ");
+                additionalRecords = scanner.nextInt();
+
+                if (additionalRecords >= 0) {
+                    // Выход из цикла, если ввод успешен и число больше нуля
+                    scanner.nextLine(); // Очищаем буфер после ввода числа
+                    break;
+                } else {
+                    throw new IllegalArgumentException("Количество пластинок должно быть неотрицательным целым числом.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("\nОшибка: Введено некорректное количество. Количество должно быть числом.\n");
+                scanner.nextLine(); // Очищаем буфер после некорректного ввода
+            } catch (IllegalArgumentException e) {
+                System.out.println("\nОшибка: " + e.getMessage() + "\n");
+            }
+        }
 
         if (additionalRecords == 0)
         {
@@ -163,9 +198,27 @@ public class Store {
         System.out.println("\n\t~~Добавление новых сотрудников в магазин~~");
 
         System.out.println("-------------------------------------------");
-        System.out.print("Введите количество сотрудников, которых вы хотите добавить: ");
-        int additionalEmployees = scanner.nextInt();
-        scanner.nextLine(); // Очищаем буфер после ввода числа
+        int additionalEmployees;
+        // Ввод количества сотрудников с защитой от некорректного ввода
+        while (true) {
+            try {
+                System.out.print("Введите количество сотрудников, которых вы хотите добавить: ");
+                additionalEmployees = scanner.nextInt();
+
+                if (additionalEmployees >= 0) {
+                    // Выход из цикла, если ввод успешен и число неотрицательное
+                    scanner.nextLine(); // Очищаем буфер после ввода числа
+                    break;
+                } else {
+                    throw new IllegalArgumentException("Количество сотрудников должно быть неотрицательным целым числом.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("\nОшибка: Введено некорректное количество. Количество должно быть числом.\n");
+                scanner.nextLine(); // Очищаем буфер после некорректного ввода
+            } catch (IllegalArgumentException e) {
+                System.out.println("\nОшибка: " + e.getMessage() + "\n");
+            }
+        }
 
         if (additionalEmployees == 0)
         {
@@ -222,16 +275,24 @@ public class Store {
 
         int recordIndex;
 
-        do {
-            System.out.print("Выберите номер виниловой пластинки, которую вы хотите удалить: ");
-            recordIndex = scanner.nextInt();
+        while (true) {
+            try {
+                System.out.print("Выберите номер виниловой пластинки, которую вы хотите удалить: ");
+                recordIndex = scanner.nextInt();
 
-            if (recordIndex < 1 || recordIndex > numVinylRecords) {
-                System.out.println("-------------------------------------------");
-                System.out.println("Ошибка: введен некорректный номер виниловой пластинки.");
-                System.out.println("-------------------------------------------");
+                if (recordIndex >= 1 && recordIndex <= numVinylRecords) {
+                    break; // Выход из цикла, если ввод успешен
+                } else {
+                    throw new IllegalArgumentException("Введен некорректный номер виниловой пластинки.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("\nОшибка: Введен некорректный номер. Номер должен быть целым числом.\n");
+                scanner.nextLine(); // Очищаем буфер после некорректного ввода
+            } catch (IllegalArgumentException e) {
+                System.out.println("\nОшибка: " + e.getMessage() + "\n");
+                scanner.nextLine(); // Очищаем буфер после некорректного ввода
             }
-        } while (recordIndex < 1 || recordIndex > numVinylRecords);
+        }
 
         // Создаем новый массив с уменьшенным размером
         VinylRecord[] newVinylRecords = new VinylRecord[numVinylRecords - 1];
@@ -271,16 +332,24 @@ public class Store {
 
         int employeeIndex;
 
-        do {
-            System.out.print("Выберите номер сотрудника, которого вы хотите удалить: ");
-            employeeIndex = scanner.nextInt();
+        while (true) {
+            try {
+                System.out.print("Выберите номер сотрудника, которого вы хотите удалить: ");
+                employeeIndex = scanner.nextInt();
 
-            if (employeeIndex < 1 || employeeIndex > numEmployees) {
-                System.out.println("-------------------------------------------");
-                System.out.println("Ошибка: введен некорректный номер сотрудника.");
-                System.out.println("-------------------------------------------");
+                if (employeeIndex >= 1 && employeeIndex <= numEmployees) {
+                    break; // Выход из цикла, если ввод успешен
+                } else {
+                    throw new IllegalArgumentException("Введен некорректный номер сотрудника.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("\nОшибка: Введен некорректный номер. Номер должен быть целым числом.\n");
+                scanner.nextLine(); // Очищаем буфер после некорректного ввода
+            } catch (IllegalArgumentException e) {
+                System.out.println("\nОшибка: " + e.getMessage() + "\n");
+                scanner.nextLine(); // Очищаем буфер после некорректного ввода
             }
-        } while (employeeIndex < 1 || employeeIndex > numEmployees);
+        }
 
         // Создаем новый массив с уменьшенным размером
         Employee[] newEmployees = new Employee[numEmployees - 1];

@@ -1,6 +1,7 @@
 package lab;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -30,6 +31,9 @@ public class Order {
 
     // Метод для установки номера заказа
     public void setOrderNumber(int orderNumber) {
+        if (orderNumber <= 0) {
+            throw new IllegalArgumentException("Номер заказа должен быть положительным целым числом.");
+        }
         this.orderNumber = orderNumber;
     }
 
@@ -50,6 +54,9 @@ public class Order {
 
     // Метод для установки количества заказанных пластинок
     public void setQuantityOrdered(int quantityOrdered) {
+        if (quantityOrdered <= 0) {
+            throw new IllegalArgumentException("Количество заказанных пластинок должно быть положительным целым числом.");
+        }
         this.quantityOrdered = quantityOrdered;
     }
 
@@ -60,6 +67,9 @@ public class Order {
 
     // Метод для установки итоговой стоимости заказа
     public void setTotalCost(float totalCost) {
+        if (totalCost <= 0) {
+            throw new IllegalArgumentException("Итоговая стоимость должна быть положительным числом.");
+        }
         this.totalCost = totalCost;
     }
 
@@ -106,17 +116,25 @@ public class Order {
 
         // Ввод индекса сотрудника с проверкой
         int employeeIndex;
-        do {
-            System.out.print("Выберите номер сотрудника: ");
-            while (!scanner.hasNextInt()) {
-                System.out.print("Некорректный ввод! Пожалуйста, введите число: ");
-                scanner.next(); // Очищаем буфер после некорректного ввода
+
+        while (true) {
+            try {
+                System.out.print("Выберите номер сотрудника: ");
+                employeeIndex = scanner.nextInt();
+
+                if (employeeIndex < 1 || employeeIndex > store.getEmployeesInStore().length) {
+                    throw new IllegalArgumentException("Некорректный номер сотрудника. Пожалуйста, введите существующий номер.");
+                }
+
+                break; // Выход из цикла, если ввод успешен
+            } catch (InputMismatchException e) {
+                System.out.println("\nОшибка: Введен некорректный номер. Номер должен быть целым числом.\n");
+                scanner.nextLine(); // Очищаем буфер после некорректного ввода
+            } catch (IllegalArgumentException e) {
+                System.out.println("\nОшибка: " + e.getMessage() + "\n");
+                scanner.nextLine(); // Очищаем буфер после некорректного ввода
             }
-            employeeIndex = scanner.nextInt();
-            if (employeeIndex < 1 || employeeIndex > store.getEmployeesInStore().length) {
-                System.out.println("Некорректный номер сотрудника. Пожалуйста, введите существующий номер.");
-            }
-        } while (employeeIndex < 1 || employeeIndex > store.getEmployeesInStore().length);
+        }
 
         employee = store.getEmployeesInStore()[employeeIndex - 1];
         System.out.println("-------------------------------------------");
@@ -132,24 +150,43 @@ public class Order {
 
         // Ввод индекса виниловой пластинки с проверкой
         int recordIndex;
-        do {
-            System.out.print("Выберите номер виниловой пластинки: ");
-            while (!scanner.hasNextInt()) {
-                System.out.print("Некорректный ввод! Пожалуйста, введите число: ");
-                scanner.next(); // Очищаем буфер после некорректного ввода
+
+        while (true) {
+            try {
+                System.out.print("Выберите номер виниловой пластинки: ");
+                recordIndex = scanner.nextInt();
+
+                if (recordIndex < 1 || recordIndex > store.getVinylRecordsInStore().length) {
+                    throw new IllegalArgumentException("Некорректный номер виниловой пластинки. Пожалуйста, введите существующий номер.");
+                }
+
+                break; // Выход из цикла, если ввод успешен
+            } catch (InputMismatchException e) {
+                System.out.println("\nОшибка: Введен некорректный номер. Номер должен быть целым числом.\n");
+                scanner.nextLine(); // Очищаем буфер после некорректного ввода
+            } catch (IllegalArgumentException e) {
+                System.out.println("\nОшибка: " + e.getMessage() + "\n");
+                scanner.nextLine(); // Очищаем буфер после некорректного ввода
             }
-            recordIndex = scanner.nextInt();
-            if (recordIndex < 1 || recordIndex > store.getVinylRecordsInStore().length) {
-                System.out.println("Некорректный номер виниловой пластинки. Пожалуйста, введите существующий номер.");
-            }
-        } while (recordIndex < 1 || recordIndex > store.getVinylRecordsInStore().length);
+        }
 
         orderedRecord = store.getVinylRecordsInStore()[recordIndex - 1];
         System.out.println("-------------------------------------------");
 
-        System.out.print("Введите количество заказанных виниловых пластинок: ");
-        setQuantityOrdered(scanner.nextInt());
-        System.out.println("-------------------------------------------\n");
+        // Ввод количества заказанных виниловых пластинок с защитой от некорректного ввода
+        while (true) {
+            try {
+                System.out.print("Введите количество заказанных виниловых пластинок: ");
+                setQuantityOrdered(scanner.nextInt());
+                System.out.println("-------------------------------------------\n");
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("\nОшибка: Введено некорректное количество. Количество должно быть числом.\n");
+                scanner.nextLine(); // Очищаем буфер после некорректного ввода
+            } catch (IllegalArgumentException e) {
+                System.out.println("\nОшибка: " + e.getMessage() + "\n");
+            }
+        }
 
         // Вычисляем общую стоимость заказа
         // Создаем объект вспомогательного класса для вычисления итоговой суммы заказа

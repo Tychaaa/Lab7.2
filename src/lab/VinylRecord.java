@@ -83,7 +83,7 @@ public class VinylRecord {
     // Метод для получения цены виниловой пластинки
     public void setPrice(float price) {
         if (price <= 0) {
-            throw new IllegalArgumentException("Цена должна быть положительным целым числом.");
+            throw new IllegalArgumentException("Цена должна быть положительным числом.");
         }
         this.price = price;
     }

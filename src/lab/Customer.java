@@ -1,5 +1,6 @@
 package lab;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // Класс для объекта "Клиент"
@@ -22,6 +23,9 @@ public class Customer extends Human {
 
     // Метод для установки денег клиента
     public void setMoney(float money) {
+        if (money <= 0) {
+            throw new IllegalArgumentException("Количество денег должно быть положительным числом.");
+        }
         this.money = money;
     }
 
@@ -52,8 +56,19 @@ public class Customer extends Human {
         setLastName(scanner.next());
         scanner.nextLine(); // Очищаем буфер
 
-        System.out.print("Введите количество денег клиента: ");
-        setMoney(scanner.nextFloat());
+        // Ввод денег клиента с защитой от некорректного ввода
+        while (true) {
+            try {
+                System.out.print("Введите количество денег клиента: ");
+                setMoney(scanner.nextFloat());
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("\nОшибка: Введено некорректное количество денег. Количество денег должно быть числом.\n");
+                scanner.nextLine(); // Очищаем буфер
+            } catch (IllegalArgumentException e) {
+                System.out.println("\nОшибка: " + e.getMessage() + "\n");
+            }
+        }
 
         scanner.nextLine(); // Очищаем буфер
         System.out.print("Введите адрес доставки клиента: ");

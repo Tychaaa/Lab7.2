@@ -7,6 +7,9 @@ public class OrderHelper {
 
     // Конструктор с параметрами
     public OrderHelper (float value){
+        if (value <= 0) {
+            throw new IllegalArgumentException("Значение должно быть положительным целым числом.");
+        }
         this.value = value;
     }
 
@@ -17,6 +20,9 @@ public class OrderHelper {
 
     // Метод для установки значения
     public void setValue(float value) {
+        if (value <= 0) {
+            throw new IllegalArgumentException("Значение должно быть положительным целым числом.");
+        }
         this.value = value;
     }
 }
