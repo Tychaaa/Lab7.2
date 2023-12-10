@@ -1,5 +1,6 @@
 package lab;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // Класс для объекта "Виниловая пластинка"
@@ -58,6 +59,9 @@ public class VinylRecord {
 
     // Метод для получения года издания
     public void setYear(int year) {
+        if (year <= 0) {
+            throw new IllegalArgumentException("Год издания должнен быть положительным целым числом.");
+        }
         this.year = year;
     }
 
@@ -78,6 +82,9 @@ public class VinylRecord {
 
     // Метод для получения цены виниловой пластинки
     public void setPrice(float price) {
+        if (price <= 0) {
+            throw new IllegalArgumentException("Цена должна быть положительным целым числом.");
+        }
         this.price = price;
     }
 
@@ -88,6 +95,9 @@ public class VinylRecord {
 
     // Метод для получения количества виниловой пластинки
     public void setQuantity(int quantity) {
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("Количество должно быть положительным целым числом.");
+        }
         this.quantity = quantity;
     }
 
@@ -101,19 +111,52 @@ public class VinylRecord {
         System.out.print("Введите исполнителя: ");
         setArtist(scanner.nextLine());
 
-        System.out.print("Введите год выпуска: ");
-        setYear(scanner.nextInt());
+        // Ввод года выпуска с защитой от некорректного ввода
+        while (true) {
+            try {
+                System.out.print("Введите год выпуска: ");
+                setYear(scanner.nextInt());
+                break; // Выход из цикла, если ввод успешен
+            } catch (InputMismatchException e) {
+                System.out.println("\nОшибка: Введен некорректный год. Год должен быть целым числом.\n");
+                scanner.nextLine(); // Очищаем буфер
+            } catch (IllegalArgumentException e) {
+                System.out.println("\nОшибка: " + e.getMessage() + "\n");
+            }
+        }
 
         scanner.nextLine(); // Очищаем буфер
 
         System.out.print("Введите жанр: ");
         setGenre(scanner.nextLine());
 
-        System.out.print("Введите цену: ");
-        setPrice(scanner.nextFloat());
+        // Ввод цены с защитой от некорректного ввода
+        while (true) {
+            try {
+                System.out.print("Введите цену: ");
+                setPrice(scanner.nextFloat());
+                break; // Выход из цикла, если ввод успешен
+            } catch (InputMismatchException e) {
+                System.out.println("\nОшибка: Введена некорректная цена. Цена должна быть числом.\n");
+                scanner.nextLine(); // Очищаем буфер
+            } catch (IllegalArgumentException e) {
+                System.out.println("\nОшибка: " + e.getMessage() + "\n");
+            }
+        }
 
-        System.out.print("Введите количество в наличии: ");
-        setQuantity(scanner.nextInt());
+        // Ввод количества с защитой от некорректного ввода
+        while (true) {
+            try {
+                System.out.print("Введите количество в наличии: ");
+                setQuantity(scanner.nextInt());
+                break; // Выход из цикла, если ввод успешен
+            } catch (InputMismatchException e) {
+                System.out.println("\nОшибка: Введено некорректное количество. Количество должно быть целым числом.\n");
+                scanner.nextLine(); // Очищаем буфер
+            } catch (IllegalArgumentException e) {
+                System.out.println("\nОшибка: " + e.getMessage() + "\n");
+            }
+        }
     }
 
     // Метод для вывода информации о виниловой пластинке

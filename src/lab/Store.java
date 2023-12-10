@@ -1,5 +1,6 @@
 package lab;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // Класс для объекта "Магазин"
@@ -64,9 +65,26 @@ public class Store {
         setStoreAddress(scanner.nextLine());
         System.out.println("-------------------------------------------");
 
-        System.out.print("Введите количество виниловых пластинок, которые вы хотите добавить: ");
-        numVinylRecords = scanner.nextInt();
-        scanner.nextLine(); // Очищаем буфер после ввода числа
+        // Ввод количества виниловых пластинок с защитой от некорректного ввода
+        while (true) {
+            try {
+                System.out.print("Введите количество виниловых пластинок, которые вы хотите добавить: ");
+                numVinylRecords = scanner.nextInt();
+
+                if (numVinylRecords > 0) {
+                    // Выход из цикла, если ввод успешен и число больше нуля
+                    scanner.nextLine(); // Очищаем буфер после ввода числа
+                    break;
+                } else {
+                    throw new IllegalArgumentException("Количество пластинок должно быть положительным целым числом.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("\nОшибка: Введено некорректное количество. количество должно быть числом.\n");
+                scanner.nextLine(); // Очищаем буфер
+            } catch (IllegalArgumentException e) {
+            System.out.println("\nОшибка: " + e.getMessage() + "\n");
+            }
+        }
 
         System.out.println("-------------------------------------------");
         vinylRecordsInStore = new VinylRecord[numVinylRecords];
