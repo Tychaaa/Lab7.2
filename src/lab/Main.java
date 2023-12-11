@@ -14,6 +14,7 @@ public class Main {
         // Создание объектов магазина и заказа
         Store store = new Store();
         Order[] orders = new Order[100];
+        String[][] vinylInfo = new String[100][3];
 
         int input;
 
@@ -33,7 +34,8 @@ public class Main {
             System.out.println("8. Посмотреть ассортимент магазина");
             System.out.println("9. Создать заказ");
             System.out.println("10. Посмотреть информацию о заказе");
-            System.out.println("11. Очистить список заказов");
+            System.out.println("11. Посмотреть информацию о заказанных пластинках");
+            System.out.println("12. Очистить список заказов");
             System.out.println("0. Выход из программы\n");
 
             // Ввод выбора пользователя с защитой от некорректного ввода
@@ -138,7 +140,7 @@ public class Main {
                 case 9:
                     if(StoreCreated) {
                         Order newOrder = new Order();
-                        newOrder.inputOrderInfo(store);
+                        newOrder.inputOrderInfo(store, vinylInfo);
                         orders[OrderCreatedCount++] = newOrder;
                         OrderCreated = true;
                     }else
@@ -152,8 +154,16 @@ public class Main {
                     else
                         System.out.println("Ни одного заказа не найдено!\n");
                     break;
-                // 10. Очистка списка заказов
+                // 11. Информация о заказанных пластинках
                 case 11:
+                    if (StoreCreated && OrderCreated) {
+                        Order.outputOrderInfo(vinylInfo);
+                    } else {
+                        System.out.println("Ни одного заказа не найдено!\n");
+                    }
+                    break;
+                // 12. Очистка списка заказов
+                case 12:
                     if (StoreCreated && OrderCreated) {
                         System.out.println("\n\t\t~~ВНИМАНИЕ~~");
                         System.out.println("-------------------------------------------");

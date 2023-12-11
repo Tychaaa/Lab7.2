@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 // Класс для объекта "Заказ"
 public class Order {
+    private static int orderCounter = 0;      // Счётчик количества заказов
+
     private static int orderNumberGenerator;  // Генератор номеров заказов
     private int orderNumber;                  // Номер заказа
     private String orderDate;                 // Дата заказа
@@ -95,7 +97,7 @@ public class Order {
     }
 
     // Метод для ввода информации о заказе
-    public void inputOrderInfo(Store store) {
+    public void inputOrderInfo(Store store, String[][] vinylInfo) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("\n\t~~Оформление заказа~~");
@@ -193,6 +195,25 @@ public class Order {
         OrderHelper result = calculateTotalCost(quantityOrdered, orderedRecord);
         totalCost = result.getValue();
         setTotalCost(totalCost);
+
+        // Сохранение информации о заказе в массив vinylInfo
+        vinylInfo[orderCounter][0] = String.valueOf(orderNumber);
+        vinylInfo[orderCounter][1] = orderedRecord.getAlbumName();
+        vinylInfo[orderCounter][2] = String.valueOf(totalCost);
+
+        orderCounter++;
+    }
+
+    public static void outputOrderInfo(String[][] vinylInfo) {
+        System.out.println("\n\t~~Информация о заказах~~");
+        System.out.println("-------------------------------------------------------------");
+        System.out.printf("%-15s%-30s%-20s\n", "Номер заказа", "Виниловая пластинка", "Общая стоимость");
+
+        for (int i = 0; i < orderCounter; i++) {
+            System.out.printf("%-15s%-30s%-20s\n", vinylInfo[i][0], vinylInfo[i][1], vinylInfo[i][2]);
+        }
+
+        System.out.println("-------------------------------------------------------------\n");
     }
 
     // Метод для вывода информации о заказе
