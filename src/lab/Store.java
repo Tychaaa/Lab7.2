@@ -379,10 +379,7 @@ public class Store {
         for (Employee employee : employeesInStore) {
             if (employee != null) {
                 System.out.println("Сотрудник #" + employeeNumber);
-                System.out.println("Имя: " + employee.getFirstName());
-                System.out.println("Фамилия: " + employee.getLastName());
-                System.out.println("Должность: " + employee.getPosition());
-                System.out.println("Зарплата: " + employee.getSalary());
+                System.out.println(employee.toString());  // Заменил метод output используя метод toString
                 System.out.println("---------------------------");
                 employeeNumber++;
             }
@@ -410,12 +407,7 @@ public class Store {
         for (VinylRecord record : vinylRecordsInStore) {
             if (record != null) {
                 System.out.println("Виниловая пластинка #" + recordNumber);
-                System.out.println("Название альбома: " + record.getAlbumName());
-                System.out.println("Исполнитель: " + record.getArtist());
-                System.out.println("Год выпуска: " + record.getYear());
-                System.out.println("Жанр: " + record.getGenre());
-                System.out.println("Цена: " + record.getPrice());
-                System.out.println("Количество в наличии: " + record.getQuantity());
+                System.out.println(record.toString());
                 System.out.println("---------------------------");
                 recordNumber++;
             }

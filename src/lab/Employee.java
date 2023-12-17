@@ -86,8 +86,16 @@ public class Employee extends Human {
 
     // Метод для вывода информации о сотруднике
     public void outputEmployee() {
-        System.out.println("Имя: " + firstName + " " + lastName);
+        System.out.println("ФИО: " + firstName + " " + lastName);
         System.out.println("Должность: " + getPosition());
         System.out.println("Зарплата: " + getSalary());
+    }
+
+    // Переопределение метода toString
+    @Override
+    public String toString() {
+        return "ФИО: " + firstName + " " + lastName +
+                "\nДолжность: " + getPosition() +
+                "\nЗарплата: " + getSalary();
     }
 }

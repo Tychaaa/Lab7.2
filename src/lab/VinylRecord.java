@@ -168,4 +168,15 @@ public class VinylRecord {
         System.out.println("Цена: " + getPrice());
         System.out.println("Количество в наличии: " + getQuantity());
     }
+
+    // Переопределение метода toString
+    @Override
+    public String toString() {
+        return "Название альбома: " + getAlbumName() +
+                "\nИсполнитель: " + getArtist() +
+                "\nГод выпуска: " + getYear() +
+                "\nЖанр: " + getGenre() +
+                "\nЦена: " + getPrice() +
+                "\nКоличество в наличии: " + getQuantity();
+    }
 }
