@@ -36,6 +36,7 @@ public class Main {
             System.out.println("10. Посмотреть информацию о заказе");
             System.out.println("11. Посмотреть информацию о заказанных пластинках");
             System.out.println("12. Очистить список заказов");
+            System.out.println("13. Дублировать (клон) заказ");
             System.out.println("0. Выход из программы\n");
 
             // Ввод выбора пользователя с защитой от некорректного ввода
@@ -181,6 +182,55 @@ public class Main {
                             System.out.println("-------------------------------------------\n");
                         }
 
+                    } else {
+                        System.out.println("Ни одного заказа не найдено!\n");
+                    }
+                    break;
+                // 13. Клонирование заказов
+                case 13:
+                    if (StoreCreated && OrderCreated) {
+                        System.out.println("\n\t\t~~Клонирование заказов~~");
+                        System.out.println("-------------------------------------------");
+
+                        // Выводим список созданных заказов
+                        System.out.println("Список созданных заказов:");
+                        for (int i = 0; i < OrderCreatedCount; i++) {
+                            System.out.println((i + 1) + ". Заказ №" + orders[i].getOrderNumber());
+                        }
+
+                        int selectedOrderIndex;
+                        // Выбор заказа для клонирования
+                        while (true) {
+                            try {
+                                System.out.print("Выберите номер заказа для клонирования: ");
+                                selectedOrderIndex = scan.nextInt();
+
+                                if (selectedOrderIndex < 1 || selectedOrderIndex > OrderCreatedCount) {
+                                    throw new IllegalArgumentException("Некорректный номер заказа. Пожалуйста, введите существующий номер.");
+                                }
+
+                                break; // Выход из цикла, если ввод успешен
+                            } catch (InputMismatchException e) {
+                                System.out.println("\nОшибка: Введен некорректный номер. Номер должен быть целым числом.\n");
+                                scan.nextLine(); // Очищаем буфер после некорректного ввода
+                            } catch (IllegalArgumentException e) {
+                                System.out.println("\nОшибка: " + e.getMessage() + "\n");
+                                scan.nextLine(); // Очищаем буфер после некорректного ввода
+                            }
+                        }
+
+                        try {
+                            // Клонирование заказа
+                            Order clonedOrder = (Order) orders[selectedOrderIndex - 1].deepClone();
+                            orders[OrderCreatedCount++] = clonedOrder;
+
+                            System.out.println("-------------------------------------------");
+                            System.out.println("Заказ успешно клонирован!");
+                            System.out.println("-------------------------------------------\n");
+
+                        } catch (CloneNotSupportedException e) {
+                            System.out.println("\nОшибка при клонировании заказа: " + e.getMessage() + "\n");
+                        }
                     } else {
                         System.out.println("Ни одного заказа не найдено!\n");
                     }

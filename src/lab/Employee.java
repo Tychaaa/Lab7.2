@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // Класс для объекта "Сотрудник"
-public class Employee extends Human implements IHumanInfo {
+public class Employee extends Human implements IHumanInfo, Cloneable {
 
     private String position;    // Должность сотрудника
     private float salary;       // Зарплата сотрудника
@@ -20,6 +20,11 @@ public class Employee extends Human implements IHumanInfo {
         super(firstName, lastName);   // Вызов конструктора базового класса
         this.position = position;
         this.salary = salary;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
     // Перегруженный метод setFirstName

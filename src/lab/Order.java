@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 // Класс для объекта "Заказ"
-public class Order {
+public class Order implements Cloneable {
     private static int orderCounter = 0;      // Счётчик количества заказов
 
     private static int orderNumberGenerator;  // Генератор номеров заказов
@@ -25,6 +25,22 @@ public class Order {
         this.quantityOrdered = 0;
         this.totalCost = 0;
     }
+
+    // Реализация мелкого клонирования
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    // Реализация глубокого клонирования
+    public Order deepClone() throws CloneNotSupportedException {
+        Order clone = (Order) super.clone();
+        clone.employee = (Employee) employee.clone(); // глубокое клонирование сотрудника
+        clone.customer = (Customer) customer.clone(); // глубокое клонирование клиента
+        clone.orderedRecord = (VinylRecord) orderedRecord.clone(); // глубокое клонирование пластинки
+        return clone;
+    }
+
 
     // Метод для получения номера заказа
     public int getOrderNumber() {

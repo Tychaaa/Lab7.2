@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // Класс для объекта "Клиент"
-public class Customer extends Human implements IHumanInfo {
+public class Customer extends Human implements IHumanInfo, Cloneable {
     private float money;        // Количество денег клиента
     private String address;     // Адрес доставки клиента
 
@@ -19,6 +19,11 @@ public class Customer extends Human implements IHumanInfo {
         super(firstName, lastName);   // Вызов конструктора базового класса
         this.money = money;
         this.address = address;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
     // Перегруженный метод setFirstName

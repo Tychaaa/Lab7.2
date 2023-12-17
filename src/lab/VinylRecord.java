@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // Класс для объекта "Виниловая пластинка"
-public class VinylRecord {
+public class VinylRecord implements Cloneable {
     private String albumName;   // Название альбома
     private String artist;      // Исполнитель
     private int year;           // Год выпуска
@@ -30,6 +30,11 @@ public class VinylRecord {
         this.genre = genre;
         this.price = price;
         this.quantity = quantity;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
     // Метод для установки названия виниловой пластинки
