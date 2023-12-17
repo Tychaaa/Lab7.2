@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // Класс для объекта "Клиент"
-public class Customer extends Human {
+public class Customer extends Human implements IHumanInfo {
     private float money;        // Количество денег клиента
     private String address;     // Адрес доставки клиента
 
@@ -47,6 +47,43 @@ public class Customer extends Human {
     // Метод для получения количества денег клиента
     public String getAddress() {
         return address;
+    }
+
+    // Реализация интерфейса для ввода информации о клиенте
+    @Override
+    public void inputPersonInfo() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Введите имя клиента: ");
+        String first_name = scanner.next();
+
+        System.out.print("Введите отчество клиента: ");
+        String middle_name = scanner.next();
+
+        setFirstName(first_name, middle_name);
+        scanner.nextLine(); // Очищаем буфер для считывания строки
+
+        System.out.print("Введите фамилию клиента: ");
+        lastName = scanner.next();
+        scanner.nextLine(); // Очищаем буфер
+
+        // Ввод денег клиента с защитой от некорректного ввода
+        while (true) {
+            try {
+                System.out.print("Введите количество денег клиента: ");
+                setMoney(scanner.nextFloat());
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("\nОшибка: Введено некорректное количество денег. Количество денег должно быть числом.\n");
+                scanner.nextLine(); // Очищаем буфер
+            } catch (IllegalArgumentException e) {
+                System.out.println("\nОшибка: " + e.getMessage() + "\n");
+            }
+        }
+
+        scanner.nextLine(); // Очищаем буфер
+        System.out.print("Введите адрес доставки клиента: ");
+        setAddress(scanner.nextLine());
     }
 
     // Метод для ввода информации о клиенте

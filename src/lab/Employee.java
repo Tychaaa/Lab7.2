@@ -4,7 +4,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // Класс для объекта "Сотрудник"
-public class Employee extends Human {
+public class Employee extends Human implements IHumanInfo {
+
     private String position;    // Должность сотрудника
     private float salary;       // Зарплата сотрудника
 
@@ -47,6 +48,42 @@ public class Employee extends Human {
     // Метод для получения зарплаты сотрудника
     public float getSalary() {
         return salary;
+    }
+
+    // Реализация интерфейса для ввода информации о сотруднике
+    @Override
+    public void inputPersonInfo() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Введите имя сотрудника: ");
+        String first_name = scanner.next();
+
+        System.out.print("Введите отчество сотрудника: ");
+        String middle_name = scanner.next();
+
+        setFirstName(first_name, middle_name);
+        scanner.nextLine(); // Очищаем буфер для считывания строки
+
+        System.out.print("Введите фамилию сотрудника: ");
+        lastName = scanner.next();
+        scanner.nextLine(); // Очищаем буфер для считывания строки
+
+        System.out.print("Введите должность сотрудника: ");
+        setPosition(scanner.nextLine());
+
+        // Ввод зарплаты с защитой от некорректного ввода
+        while (true) {
+            try {
+                System.out.print("Введите зарплату сотрудника: ");
+                setSalary(scanner.nextFloat());
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("\nОшибка: Введена некорректная зарплата. Зарплата должна быть числом.\n");
+                scanner.nextLine(); // Очищаем буфер
+            } catch (IllegalArgumentException e) {
+                System.out.println("\nОшибка: " + e.getMessage() + "\n");
+            }
+        }
     }
 
     // Метод для ввода информации о сотруднике

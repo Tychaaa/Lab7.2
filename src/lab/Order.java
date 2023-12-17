@@ -144,7 +144,7 @@ public class Order {
         // Вводим данные клиента
         System.out.println("Введите информацию о клиенте, оформившем заказ:");
         customer = new Customer();
-        customer.inputCustomer();
+        customer.inputPersonInfo();
         System.out.println("-------------------------------------------");
 
         // Выводим список доступных виниловых пластинок для выбора

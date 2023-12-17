@@ -121,7 +121,7 @@ public class Store {
         for (int i = 0; i < numEmployees; ++i) {
             System.out.println("Ввод информации о сотруднике #" + (i + 1));
             employeesInStore[i] = new Employee();
-            employeesInStore[i].inputEmployee();
+            employeesInStore[i].inputPersonInfo();
             System.out.println("-------------------------------------------");
         }
         System.out.println();
@@ -246,7 +246,7 @@ public class Store {
         for (int i = numEmployees; i < newSize; i++) {
             System.out.println("Ввод информации о дополнительном сотруднике #" + (i + 1));
             newEmployees[i] = new Employee();
-            newEmployees[i].inputEmployee();
+            newEmployees[i].inputPersonInfo();
             System.out.println("-------------------------------------------");
         }
 
