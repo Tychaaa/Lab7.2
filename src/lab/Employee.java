@@ -21,6 +21,11 @@ public class Employee extends Human {
         this.salary = salary;
     }
 
+    // Перегруженный метод setFirstName
+    public void setFirstName(String firstName, String middleName) {
+        this.firstName = firstName + " " + middleName;
+    }
+
     // Метод для установки должности сотрудника
     public void setPosition(String position) {
         this.position = position;
@@ -49,7 +54,12 @@ public class Employee extends Human {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Введите имя сотрудника: ");
-        firstName = scanner.next();
+        String first_name = scanner.next();
+
+        System.out.print("Введите отчество сотрудника: ");
+        String middle_name = scanner.next();
+
+        setFirstName(first_name, middle_name);
         scanner.nextLine(); // Очищаем буфер для считывания строки
 
         System.out.print("Введите фамилию сотрудника: ");

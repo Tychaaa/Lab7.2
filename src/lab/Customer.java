@@ -21,6 +21,11 @@ public class Customer extends Human {
         this.address = address;
     }
 
+    // Перегруженный метод setFirstName
+    public void setFirstName(String firstName, String middleName) {
+        this.firstName = firstName + " " + middleName;
+    }
+
     // Метод для установки денег клиента
     public void setMoney(float money) {
         if (money <= 0) {
@@ -49,7 +54,12 @@ public class Customer extends Human {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Введите имя клиента: ");
-        firstName = scanner.next();
+        String first_name = scanner.next();
+
+        System.out.print("Введите отчество клиента: ");
+        String middle_name = scanner.next();
+
+        setFirstName(first_name, middle_name);
         scanner.nextLine(); // Очищаем буфер для считывания строки
 
         System.out.print("Введите фамилию клиента: ");
