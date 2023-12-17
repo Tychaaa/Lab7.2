@@ -16,7 +16,7 @@ public class Customer extends Human {
 
     // Контруктор с параметрами
     public Customer(String firstName, String lastName, float money, String address) {
-        super(firstName, lastName);
+        super(firstName, lastName);   // Вызов конструктора базового класса
         this.money = money;
         this.address = address;
     }
