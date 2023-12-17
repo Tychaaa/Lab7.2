@@ -2,8 +2,8 @@ package lab;
 
 // Абстрактный класс для объекта "Человек"
 public abstract class Human {
-    private String firstName;   // Имя человека
-    private String lastName;    // Фамилия человека
+    protected String firstName;   // Имя человека
+    protected String lastName;    // Фамилия человека
 
     // Конструктор без параметров
     public Human(){
