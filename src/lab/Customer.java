@@ -49,11 +49,11 @@ public class Customer extends Human {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Введите имя клиента: ");
-        setFirstName(scanner.next());
+        firstName = scanner.next();
         scanner.nextLine(); // Очищаем буфер для считывания строки
 
         System.out.print("Введите фамилию клиента: ");
-        setLastName(scanner.next());
+        lastName = scanner.next();
         scanner.nextLine(); // Очищаем буфер
 
         // Ввод денег клиента с защитой от некорректного ввода
@@ -77,7 +77,7 @@ public class Customer extends Human {
 
     // Метод для вывода информации о клиенте
     public void outputCustomer() {
-        System.out.println("Имя: " + getFirstName() + " " + getLastName());
+        System.out.println("Имя: " + firstName + " " + lastName);
         System.out.println("Количество денег: " + getMoney());
         System.out.println("Адрес доставки: " + getAddress());
     }

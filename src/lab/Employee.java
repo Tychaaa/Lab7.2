@@ -49,11 +49,11 @@ public class Employee extends Human {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Введите имя сотрудника: ");
-        setFirstName(scanner.next());
+        firstName = scanner.next();
         scanner.nextLine(); // Очищаем буфер для считывания строки
 
         System.out.print("Введите фамилию сотрудника: ");
-        setLastName(scanner.next());
+        lastName = scanner.next();
         scanner.nextLine(); // Очищаем буфер для считывания строки
 
         System.out.print("Введите должность сотрудника: ");
@@ -76,7 +76,7 @@ public class Employee extends Human {
 
     // Метод для вывода информации о сотруднике
     public void outputEmployee() {
-        System.out.println("Имя: " + getFirstName() + " " + getLastName());
+        System.out.println("Имя: " + firstName + " " + lastName);
         System.out.println("Должность: " + getPosition());
         System.out.println("Зарплата: " + getSalary());
     }
