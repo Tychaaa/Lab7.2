@@ -37,6 +37,7 @@ public class Main {
             System.out.println("11. Посмотреть информацию о заказанных пластинках");
             System.out.println("12. Очистить список заказов");
             System.out.println("13. Дублировать (клон) заказ");
+            System.out.println("14. Демонстрация использования шаблона класса");
             System.out.println("0. Выход из программы\n");
 
             // Ввод выбора пользователя с защитой от некорректного ввода
@@ -219,6 +220,9 @@ public class Main {
                             }
                         }
 
+                        // Очистка буфера после ввода числа
+                        scan.nextLine();
+
                         try {
                             // Клонирование заказа
                             Order clonedOrder = (Order) orders[selectedOrderIndex - 1].deepClone();
@@ -234,6 +238,20 @@ public class Main {
                     } else {
                         System.out.println("Ни одного заказа не найдено!\n");
                     }
+                    break;
+                // 14. Демонстрация использования шаблона класса
+                case 14:
+                    System.out.println("\n\t~~Демонстрация использования шаблона класса~~\n");
+
+                    // Пример использования класса StoreItem с разными типами данных
+                    StoreItem<String, Double> vinylRecord = new StoreItem<>("Classic Vinyl", 1999.90);
+                    StoreItem<String, Double> cd = new StoreItem<>("Rock CD", 1499.50);
+                    StoreItem<String, Double> cassette = new StoreItem<>("80s Mixtape", 999.40);
+
+                    // Вывод информации о товарах
+                    vinylRecord.displayInfo();
+                    cd.displayInfo();
+                    cassette.displayInfo();
                     break;
                 // Выход из программы
                 case 0:
