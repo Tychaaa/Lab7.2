@@ -1,5 +1,6 @@
 package lab;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -7,13 +8,15 @@ public class Main {
     // Флаги для отслеживания создания магазина и заказа
     public static boolean StoreCreated = false;
     public static boolean OrderCreated = false;
-    // Добавляем переменную для хранения количества созданных заказов
-    private static int OrderCreatedCount = 0;
+
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         // Создание объектов магазина и заказа
         Store store = new Store();
-        Order[] orders = new Order[100];
+
+        // Заменил массив на ArrayList
+        ArrayList<Order> orders = new ArrayList<>();
+
         String[][] vinylInfo = new String[100][3];
 
         int input;
@@ -143,7 +146,7 @@ public class Main {
                     if(StoreCreated) {
                         Order newOrder = new Order();
                         newOrder.inputOrderInfo(store, vinylInfo);
-                        orders[OrderCreatedCount++] = newOrder;
+                        orders.add(newOrder); // Использую метод add для ArrayList
                         OrderCreated = true;
                     }else
                         System.out.println("Прежде чем воспользоваться этой функцией, создайте магазин!\n");
@@ -151,7 +154,8 @@ public class Main {
                 // 10. Информация о заказе
                 case 10:
                     if(StoreCreated && OrderCreated) {
-                        Order.outputOrder(orders);
+                        // Преобразую ArrayList в массив для совместимости с существующим кодом
+                        Order.outputOrder(orders.toArray(new Order[0]));
                     }
                     else
                         System.out.println("Ни одного заказа не найдено!\n");
@@ -174,8 +178,7 @@ public class Main {
                         String confirm = scan.nextLine().toLowerCase();
 
                         if (confirm.equals("yes")) {
-                            Order.clearOrders(orders);
-                            OrderCreatedCount = 0;
+                            orders.clear(); // Использую метод clear для очистки ArrayList
                             OrderCreated = false;
                         } else {
                             System.out.println("-------------------------------------------");
@@ -195,8 +198,8 @@ public class Main {
 
                         // Выводим список созданных заказов
                         System.out.println("Список созданных заказов:");
-                        for (int i = 0; i < OrderCreatedCount; i++) {
-                            System.out.println((i + 1) + ". Заказ №" + orders[i].getOrderNumber());
+                        for (int i = 0; i < orders.size(); i++) {
+                            System.out.println((i + 1) + ". Заказ №" + orders.get(i).getOrderNumber());
                         }
 
                         int selectedOrderIndex;
@@ -206,7 +209,7 @@ public class Main {
                                 System.out.print("Выберите номер заказа для клонирования: ");
                                 selectedOrderIndex = scan.nextInt();
 
-                                if (selectedOrderIndex < 1 || selectedOrderIndex > OrderCreatedCount) {
+                                if (selectedOrderIndex < 1 || selectedOrderIndex > orders.size()) {
                                     throw new IllegalArgumentException("Некорректный номер заказа. Пожалуйста, введите существующий номер.");
                                 }
 
@@ -225,8 +228,8 @@ public class Main {
 
                         try {
                             // Клонирование заказа
-                            Order clonedOrder = (Order) orders[selectedOrderIndex - 1].deepClone();
-                            orders[OrderCreatedCount++] = clonedOrder;
+                            Order clonedOrder = (Order) orders.get(selectedOrderIndex - 1).deepClone();
+                            orders.add(clonedOrder);
 
                             System.out.println("-------------------------------------------");
                             System.out.println("Заказ успешно клонирован!");
@@ -252,6 +255,8 @@ public class Main {
                     vinylRecord.displayInfo();
                     cd.displayInfo();
                     cassette.displayInfo();
+
+                    System.out.println();
                     break;
                 // Выход из программы
                 case 0:
