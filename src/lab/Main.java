@@ -37,10 +37,11 @@ public class Main {
             System.out.println("8. Посмотреть ассортимент магазина");
             System.out.println("9. Создать заказ");
             System.out.println("10. Посмотреть информацию о заказе");
-            System.out.println("11. Посмотреть информацию о заказанных пластинках");
-            System.out.println("12. Очистить список заказов");
-            System.out.println("13. Дублировать (клон) заказ");
-            System.out.println("14. Демонстрация использования шаблона класса");
+            System.out.println("11. Посмотреть информацию о заказе (сортировка по номеру заказа)");
+            System.out.println("12. Посмотреть информацию о заказанных пластинках");
+            System.out.println("13. Очистить список заказов");
+            System.out.println("14. Дублировать (клон) заказ");
+            System.out.println("15. Демонстрация использования шаблона класса");
             System.out.println("0. Выход из программы\n");
 
             // Ввод выбора пользователя с защитой от некорректного ввода
@@ -160,16 +161,24 @@ public class Main {
                     else
                         System.out.println("Ни одного заказа не найдено!\n");
                     break;
-                // 11. Информация о заказанных пластинках
+                // 11. Информация о заказе (сортировка по номеру заказа)
                 case 11:
+                    if (StoreCreated && OrderCreated) {
+                        Order.outputSortedOrderList(orders);
+                    } else {
+                        System.out.println("Ни одного заказа не найдено!\n");
+                    }
+                    break;
+                // 12. Информация о заказанных пластинках
+                case 12:
                     if (StoreCreated && OrderCreated) {
                         Order.outputOrderInfo(vinylInfo);
                     } else {
                         System.out.println("Ни одного заказа не найдено!\n");
                     }
                     break;
-                // 12. Очистка списка заказов
-                case 12:
+                // 13. Очистка списка заказов
+                case 13:
                     if (StoreCreated && OrderCreated) {
                         System.out.println("\n\t\t~~ВНИМАНИЕ~~");
                         System.out.println("-------------------------------------------");
@@ -190,8 +199,8 @@ public class Main {
                         System.out.println("Ни одного заказа не найдено!\n");
                     }
                     break;
-                // 13. Клонирование заказов
-                case 13:
+                // 14. Клонирование заказов
+                case 14:
                     if (StoreCreated && OrderCreated) {
                         System.out.println("\n\t\t~~Клонирование заказов~~");
                         System.out.println("-------------------------------------------");
@@ -242,8 +251,8 @@ public class Main {
                         System.out.println("Ни одного заказа не найдено!\n");
                     }
                     break;
-                // 14. Демонстрация использования шаблона класса
-                case 14:
+                // 15. Демонстрация использования шаблона класса
+                case 15:
                     System.out.println("\n\t~~Демонстрация использования шаблона класса~~\n");
 
                     // Пример использования класса StoreItem с разными типами данных

@@ -1,9 +1,6 @@
 package lab;
 
-import java.util.Arrays;
-import java.util.InputMismatchException;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 // Класс для объекта "Заказ"
 public class Order implements Cloneable {
@@ -238,6 +235,32 @@ public class Order implements Cloneable {
         System.out.println("-------------------------------------------");
 
         for (Order order : orders) {
+            if (order != null) {
+                System.out.println("\tЗаказ №" + order.getOrderNumber());
+                System.out.println("Дата заказа: " + order.getOrderDate());
+                System.out.println("Сотрудник: " + order.getEmployee().getFirstName() + " " + order.getEmployee().getLastName());
+                System.out.println("Клиент: " + order.getCustomer().getFirstName() + " " + order.getCustomer().getLastName());
+                System.out.println("Заказанная виниловая пластинка: " + order.getOrderedRecord().getAlbumName() + " - " + order.getOrderedRecord().getArtist());
+                System.out.println("Количество заказанных виниловых пластинок: " + order.getQuantityOrdered());
+                System.out.println("Общая стоимость заказа: " + order.getTotalCost());
+                System.out.println("-------------------------------------------");
+            }
+        }
+        System.out.println();
+    }
+
+    // Метод для вывода информации о заказах, отсортированных по номеру заказа
+    public static void outputSortedOrderList(ArrayList<Order> orders) {
+        System.out.println("\n\t~~Информация о заказах (отсортированных по номеру заказа)~~");
+        System.out.println("-------------------------------------------");
+
+        // Создаем копию списка заказов для сортировки
+        ArrayList<Order> sortedOrders = new ArrayList<>(orders);
+
+        // Используем List.sort() с компаратором для сортировки
+        sortedOrders.sort(Comparator.comparingInt(Order::getOrderNumber));
+
+        for (Order order : sortedOrders) {
             if (order != null) {
                 System.out.println("\tЗаказ №" + order.getOrderNumber());
                 System.out.println("Дата заказа: " + order.getOrderDate());
