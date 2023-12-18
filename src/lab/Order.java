@@ -275,6 +275,56 @@ public class Order implements Cloneable {
         System.out.println();
     }
 
+    // Метод для поиска и вывода информации о заказе по номеру заказа
+    public static void findOrderByNumberAndDisplay(ArrayList<Order> orders) {
+        Scanner scan = new Scanner(System.in);
+
+        // Проверка, есть ли заказы в списке
+        if (orders.isEmpty()) {
+            System.out.println("Нет доступных заказов.");
+            return;
+        }
+
+        System.out.println("\n\t~~Поиск заказа по номеру~~");
+        System.out.println("-------------------------------------------");
+
+        // Ввод номера заказа с защитой от некорректного ввода
+        int selectedOrderNumber;
+        while (true) {
+            try {
+                System.out.print("Введите номер заказа: ");
+                selectedOrderNumber = scan.nextInt();
+                break; // Выход из цикла, если ввод успешен
+            } catch (InputMismatchException e) {
+                System.out.println("\nОшибка: Введен некорректный номер. Номер должен быть целым числом.\n");
+                scan.nextLine(); // Очищаем буфер после некорректного ввода
+            }
+        }
+
+        // Поиск заказа и вывод информации
+        boolean orderFound = false;
+        for (Order order : orders) {
+            if (order.getOrderNumber() == selectedOrderNumber) {
+                orderFound = true;
+                System.out.println("\n\t~~Информация о выбранном заказе~~");
+                System.out.println("-------------------------------------------");
+                System.out.println("\tЗаказ №" + order.getOrderNumber());
+                System.out.println("Дата заказа: " + order.getOrderDate());
+                System.out.println("Сотрудник: " + order.getEmployee().getFirstName() + " " + order.getEmployee().getLastName());
+                System.out.println("Клиент: " + order.getCustomer().getFirstName() + " " + order.getCustomer().getLastName());
+                System.out.println("Заказанная виниловая пластинка: " + order.getOrderedRecord().getAlbumName() + " - " + order.getOrderedRecord().getArtist());
+                System.out.println("Количество заказанных виниловых пластинок: " + order.getQuantityOrdered());
+                System.out.println("Общая стоимость заказа: " + order.getTotalCost());
+                System.out.println("-------------------------------------------");
+                break;
+            }
+        }
+
+        if (!orderFound) {
+            System.out.println("Заказ с номером " + selectedOrderNumber + " не найден.\n");
+        }
+    }
+
     // Статический метод для очистки массива заказов
     public static void clearOrders(Order[] orders) {
         Arrays.fill(orders, null);
